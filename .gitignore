@@ -269,3 +269,4 @@ _site/
 
 /src/Surging.ApiGateway
 /src/Surging.Services/Surging.Services.Server/Dockerfile
+src/apache-skywalking-apm-bin/
