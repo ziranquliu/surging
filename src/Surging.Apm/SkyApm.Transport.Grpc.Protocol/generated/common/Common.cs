@@ -35,12 +35,12 @@ namespace SkyWalking.NetworkProtocol {
             "TmV0d29ya1Byb3RvY29sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SkyWalking.NetworkProtocol.DetectPoint), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.KeyStringValuePair), global::SkyWalking.NetworkProtocol.KeyStringValuePair.Parser, new[]{ "Key", "Value" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.KeyIntValuePair), global::SkyWalking.NetworkProtocol.KeyIntValuePair.Parser, new[]{ "Key", "Value" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.CPU), global::SkyWalking.NetworkProtocol.CPU.Parser, new[]{ "UsagePercent" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Commands), global::SkyWalking.NetworkProtocol.Commands.Parser, new[]{ "Commands_" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Command), global::SkyWalking.NetworkProtocol.Command.Parser, new[]{ "Command_", "Args" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SkyWalking.NetworkProtocol.DetectPoint), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.KeyStringValuePair), global::SkyWalking.NetworkProtocol.KeyStringValuePair.Parser, new[]{ "Key", "Value" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.KeyIntValuePair), global::SkyWalking.NetworkProtocol.KeyIntValuePair.Parser, new[]{ "Key", "Value" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.CPU), global::SkyWalking.NetworkProtocol.CPU.Parser, new[]{ "UsagePercent" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Commands), global::SkyWalking.NetworkProtocol.Commands.Parser, new[]{ "Commands_" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Command), global::SkyWalking.NetworkProtocol.Command.Parser, new[]{ "Command_", "Args" }, null, null, null, null)
           }));
     }
     #endregion

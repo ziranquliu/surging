@@ -54,11 +54,11 @@ namespace SkyWalking.NetworkProtocol {
             "UAGqAhpTa3lXYWxraW5nLk5ldHdvcmtQcm90b2NvbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::SkyWalking.NetworkProtocol.DownstreamReflection.Descriptor, global::SkyWalking.NetworkProtocol.KeyWithStringValueReflection.Descriptor, global::SkyWalking.NetworkProtocol.TraceCommonReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.TraceSegmentObject), global::SkyWalking.NetworkProtocol.TraceSegmentObject.Parser, new[]{ "TraceSegmentId", "Spans", "ApplicationId", "ApplicationInstanceId", "IsSizeLimited" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.TraceSegmentReference), global::SkyWalking.NetworkProtocol.TraceSegmentReference.Parser, new[]{ "RefType", "ParentTraceSegmentId", "ParentSpanId", "ParentApplicationInstanceId", "NetworkAddress", "NetworkAddressId", "EntryApplicationInstanceId", "EntryServiceName", "EntryServiceId", "ParentServiceName", "ParentServiceId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.SpanObject), global::SkyWalking.NetworkProtocol.SpanObject.Parser, new[]{ "SpanId", "ParentSpanId", "StartTime", "EndTime", "Refs", "OperationNameId", "OperationName", "PeerId", "Peer", "SpanType", "SpanLayer", "ComponentId", "Component", "IsError", "Tags", "Logs" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.LogMessage), global::SkyWalking.NetworkProtocol.LogMessage.Parser, new[]{ "Time", "Data" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.TraceSegmentObject), global::SkyWalking.NetworkProtocol.TraceSegmentObject.Parser, new[]{ "TraceSegmentId", "Spans", "ApplicationId", "ApplicationInstanceId", "IsSizeLimited" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.TraceSegmentReference), global::SkyWalking.NetworkProtocol.TraceSegmentReference.Parser, new[]{ "RefType", "ParentTraceSegmentId", "ParentSpanId", "ParentApplicationInstanceId", "NetworkAddress", "NetworkAddressId", "EntryApplicationInstanceId", "EntryServiceName", "EntryServiceId", "ParentServiceName", "ParentServiceId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.SpanObject), global::SkyWalking.NetworkProtocol.SpanObject.Parser, new[]{ "SpanId", "ParentSpanId", "StartTime", "EndTime", "Refs", "OperationNameId", "OperationName", "PeerId", "Peer", "SpanType", "SpanLayer", "ComponentId", "Component", "IsError", "Tags", "Logs" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.LogMessage), global::SkyWalking.NetworkProtocol.LogMessage.Parser, new[]{ "Time", "Data" }, null, null, null, null)
           }));
     }
     #endregion
@@ -350,7 +350,7 @@ namespace SkyWalking.NetworkProtocol {
 
     /// <summary>Field number for the "refType" field.</summary>
     public const int RefTypeFieldNumber = 1;
-    private global::SkyWalking.NetworkProtocol.RefType refType_ = 0;
+    private global::SkyWalking.NetworkProtocol.RefType refType_ = global::SkyWalking.NetworkProtocol.RefType.CrossProcess;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::SkyWalking.NetworkProtocol.RefType RefType {
       get { return refType_; }
@@ -499,7 +499,7 @@ namespace SkyWalking.NetworkProtocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (RefType != 0) hash ^= RefType.GetHashCode();
+      if (RefType != global::SkyWalking.NetworkProtocol.RefType.CrossProcess) hash ^= RefType.GetHashCode();
       if (parentTraceSegmentId_ != null) hash ^= ParentTraceSegmentId.GetHashCode();
       if (ParentSpanId != 0) hash ^= ParentSpanId.GetHashCode();
       if (ParentApplicationInstanceId != 0) hash ^= ParentApplicationInstanceId.GetHashCode();
@@ -523,7 +523,7 @@ namespace SkyWalking.NetworkProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (RefType != 0) {
+      if (RefType != global::SkyWalking.NetworkProtocol.RefType.CrossProcess) {
         output.WriteRawTag(8);
         output.WriteEnum((int) RefType);
       }
@@ -575,7 +575,7 @@ namespace SkyWalking.NetworkProtocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (RefType != 0) {
+      if (RefType != global::SkyWalking.NetworkProtocol.RefType.CrossProcess) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) RefType);
       }
       if (parentTraceSegmentId_ != null) {
@@ -619,7 +619,7 @@ namespace SkyWalking.NetworkProtocol {
       if (other == null) {
         return;
       }
-      if (other.RefType != 0) {
+      if (other.RefType != global::SkyWalking.NetworkProtocol.RefType.CrossProcess) {
         RefType = other.RefType;
       }
       if (other.parentTraceSegmentId_ != null) {
@@ -868,7 +868,7 @@ namespace SkyWalking.NetworkProtocol {
 
     /// <summary>Field number for the "spanType" field.</summary>
     public const int SpanTypeFieldNumber = 10;
-    private global::SkyWalking.NetworkProtocol.SpanType spanType_ = 0;
+    private global::SkyWalking.NetworkProtocol.SpanType spanType_ = global::SkyWalking.NetworkProtocol.SpanType.Entry;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::SkyWalking.NetworkProtocol.SpanType SpanType {
       get { return spanType_; }
@@ -879,7 +879,7 @@ namespace SkyWalking.NetworkProtocol {
 
     /// <summary>Field number for the "spanLayer" field.</summary>
     public const int SpanLayerFieldNumber = 11;
-    private global::SkyWalking.NetworkProtocol.SpanLayer spanLayer_ = 0;
+    private global::SkyWalking.NetworkProtocol.SpanLayer spanLayer_ = global::SkyWalking.NetworkProtocol.SpanLayer.Unknown;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::SkyWalking.NetworkProtocol.SpanLayer SpanLayer {
       get { return spanLayer_; }
@@ -985,8 +985,8 @@ namespace SkyWalking.NetworkProtocol {
       if (OperationName.Length != 0) hash ^= OperationName.GetHashCode();
       if (PeerId != 0) hash ^= PeerId.GetHashCode();
       if (Peer.Length != 0) hash ^= Peer.GetHashCode();
-      if (SpanType != 0) hash ^= SpanType.GetHashCode();
-      if (SpanLayer != 0) hash ^= SpanLayer.GetHashCode();
+      if (SpanType != global::SkyWalking.NetworkProtocol.SpanType.Entry) hash ^= SpanType.GetHashCode();
+      if (SpanLayer != global::SkyWalking.NetworkProtocol.SpanLayer.Unknown) hash ^= SpanLayer.GetHashCode();
       if (ComponentId != 0) hash ^= ComponentId.GetHashCode();
       if (Component.Length != 0) hash ^= Component.GetHashCode();
       if (IsError != false) hash ^= IsError.GetHashCode();
@@ -1038,11 +1038,11 @@ namespace SkyWalking.NetworkProtocol {
         output.WriteRawTag(74);
         output.WriteString(Peer);
       }
-      if (SpanType != 0) {
+      if (SpanType != global::SkyWalking.NetworkProtocol.SpanType.Entry) {
         output.WriteRawTag(80);
         output.WriteEnum((int) SpanType);
       }
-      if (SpanLayer != 0) {
+      if (SpanLayer != global::SkyWalking.NetworkProtocol.SpanLayer.Unknown) {
         output.WriteRawTag(88);
         output.WriteEnum((int) SpanLayer);
       }
@@ -1093,10 +1093,10 @@ namespace SkyWalking.NetworkProtocol {
       if (Peer.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Peer);
       }
-      if (SpanType != 0) {
+      if (SpanType != global::SkyWalking.NetworkProtocol.SpanType.Entry) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SpanType);
       }
-      if (SpanLayer != 0) {
+      if (SpanLayer != global::SkyWalking.NetworkProtocol.SpanLayer.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SpanLayer);
       }
       if (ComponentId != 0) {
@@ -1146,10 +1146,10 @@ namespace SkyWalking.NetworkProtocol {
       if (other.Peer.Length != 0) {
         Peer = other.Peer;
       }
-      if (other.SpanType != 0) {
+      if (other.SpanType != global::SkyWalking.NetworkProtocol.SpanType.Entry) {
         SpanType = other.SpanType;
       }
-      if (other.SpanLayer != 0) {
+      if (other.SpanLayer != global::SkyWalking.NetworkProtocol.SpanLayer.Unknown) {
         SpanLayer = other.SpanLayer;
       }
       if (other.ComponentId != 0) {

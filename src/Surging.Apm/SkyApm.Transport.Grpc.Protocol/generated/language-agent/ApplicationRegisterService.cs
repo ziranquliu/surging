@@ -35,9 +35,9 @@ namespace SkyWalking.NetworkProtocol {
             "dHdvcmtQcm90b2NvbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::SkyWalking.NetworkProtocol.KeyWithIntegerValueReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Application), global::SkyWalking.NetworkProtocol.Application.Parser, new[]{ "ApplicationCode" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ApplicationMapping), global::SkyWalking.NetworkProtocol.ApplicationMapping.Parser, new[]{ "Application" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Application), global::SkyWalking.NetworkProtocol.Application.Parser, new[]{ "ApplicationCode" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ApplicationMapping), global::SkyWalking.NetworkProtocol.ApplicationMapping.Parser, new[]{ "Application" }, null, null, null, null)
           }));
     }
     #endregion

@@ -41,11 +41,11 @@ namespace SkyWalking.NetworkProtocol {
             "a2luZy5OZXR3b3JrUHJvdG9jb2xiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::SkyWalking.NetworkProtocol.CommonReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SkyWalking.NetworkProtocol.PoolType), typeof(global::SkyWalking.NetworkProtocol.GCPhrase), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.JVMMetric), global::SkyWalking.NetworkProtocol.JVMMetric.Parser, new[]{ "Time", "Cpu", "Memory", "MemoryPool", "Gc" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Memory), global::SkyWalking.NetworkProtocol.Memory.Parser, new[]{ "IsHeap", "Init", "Max", "Used", "Committed" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.MemoryPool), global::SkyWalking.NetworkProtocol.MemoryPool.Parser, new[]{ "Type", "Init", "Max", "Used", "Commited" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.GC), global::SkyWalking.NetworkProtocol.GC.Parser, new[]{ "Phrase", "Count", "Time" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SkyWalking.NetworkProtocol.PoolType), typeof(global::SkyWalking.NetworkProtocol.GCPhrase), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.JVMMetric), global::SkyWalking.NetworkProtocol.JVMMetric.Parser, new[]{ "Time", "Cpu", "Memory", "MemoryPool", "Gc" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Memory), global::SkyWalking.NetworkProtocol.Memory.Parser, new[]{ "IsHeap", "Init", "Max", "Used", "Committed" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.MemoryPool), global::SkyWalking.NetworkProtocol.MemoryPool.Parser, new[]{ "Type", "Init", "Max", "Used", "Commited" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.GC), global::SkyWalking.NetworkProtocol.GC.Parser, new[]{ "Phrase", "Count", "Time" }, null, null, null, null)
           }));
     }
     #endregion
@@ -573,7 +573,7 @@ namespace SkyWalking.NetworkProtocol {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 1;
-    private global::SkyWalking.NetworkProtocol.PoolType type_ = 0;
+    private global::SkyWalking.NetworkProtocol.PoolType type_ = global::SkyWalking.NetworkProtocol.PoolType.CodeCacheUsage;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::SkyWalking.NetworkProtocol.PoolType Type {
       get { return type_; }
@@ -650,7 +650,7 @@ namespace SkyWalking.NetworkProtocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Type != 0) hash ^= Type.GetHashCode();
+      if (Type != global::SkyWalking.NetworkProtocol.PoolType.CodeCacheUsage) hash ^= Type.GetHashCode();
       if (Init != 0L) hash ^= Init.GetHashCode();
       if (Max != 0L) hash ^= Max.GetHashCode();
       if (Used != 0L) hash ^= Used.GetHashCode();
@@ -668,7 +668,7 @@ namespace SkyWalking.NetworkProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Type != 0) {
+      if (Type != global::SkyWalking.NetworkProtocol.PoolType.CodeCacheUsage) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Type);
       }
@@ -696,7 +696,7 @@ namespace SkyWalking.NetworkProtocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Type != 0) {
+      if (Type != global::SkyWalking.NetworkProtocol.PoolType.CodeCacheUsage) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (Init != 0L) {
@@ -722,7 +722,7 @@ namespace SkyWalking.NetworkProtocol {
       if (other == null) {
         return;
       }
-      if (other.Type != 0) {
+      if (other.Type != global::SkyWalking.NetworkProtocol.PoolType.CodeCacheUsage) {
         Type = other.Type;
       }
       if (other.Init != 0L) {
@@ -812,7 +812,7 @@ namespace SkyWalking.NetworkProtocol {
 
     /// <summary>Field number for the "phrase" field.</summary>
     public const int PhraseFieldNumber = 1;
-    private global::SkyWalking.NetworkProtocol.GCPhrase phrase_ = 0;
+    private global::SkyWalking.NetworkProtocol.GCPhrase phrase_ = global::SkyWalking.NetworkProtocol.GCPhrase.New;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::SkyWalking.NetworkProtocol.GCPhrase Phrase {
       get { return phrase_; }
@@ -865,7 +865,7 @@ namespace SkyWalking.NetworkProtocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Phrase != 0) hash ^= Phrase.GetHashCode();
+      if (Phrase != global::SkyWalking.NetworkProtocol.GCPhrase.New) hash ^= Phrase.GetHashCode();
       if (Count != 0L) hash ^= Count.GetHashCode();
       if (Time != 0L) hash ^= Time.GetHashCode();
       if (_unknownFields != null) {
@@ -881,7 +881,7 @@ namespace SkyWalking.NetworkProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Phrase != 0) {
+      if (Phrase != global::SkyWalking.NetworkProtocol.GCPhrase.New) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Phrase);
       }
@@ -901,7 +901,7 @@ namespace SkyWalking.NetworkProtocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Phrase != 0) {
+      if (Phrase != global::SkyWalking.NetworkProtocol.GCPhrase.New) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Phrase);
       }
       if (Count != 0L) {
@@ -921,7 +921,7 @@ namespace SkyWalking.NetworkProtocol {
       if (other == null) {
         return;
       }
-      if (other.Phrase != 0) {
+      if (other.Phrase != global::SkyWalking.NetworkProtocol.GCPhrase.New) {
         Phrase = other.Phrase;
       }
       if (other.Count != 0L) {

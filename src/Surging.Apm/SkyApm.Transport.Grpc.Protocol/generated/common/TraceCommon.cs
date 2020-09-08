@@ -35,9 +35,9 @@ namespace SkyWalking.NetworkProtocol {
             "GlNreVdhbGtpbmcuTmV0d29ya1Byb3RvY29sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SkyWalking.NetworkProtocol.SpanType), typeof(global::SkyWalking.NetworkProtocol.RefType), typeof(global::SkyWalking.NetworkProtocol.SpanLayer), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.UpstreamSegment), global::SkyWalking.NetworkProtocol.UpstreamSegment.Parser, new[]{ "GlobalTraceIds", "Segment" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.UniqueId), global::SkyWalking.NetworkProtocol.UniqueId.Parser, new[]{ "IdParts" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SkyWalking.NetworkProtocol.SpanType), typeof(global::SkyWalking.NetworkProtocol.RefType), typeof(global::SkyWalking.NetworkProtocol.SpanLayer), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.UpstreamSegment), global::SkyWalking.NetworkProtocol.UpstreamSegment.Parser, new[]{ "GlobalTraceIds", "Segment" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.UniqueId), global::SkyWalking.NetworkProtocol.UniqueId.Parser, new[]{ "IdParts" }, null, null, null, null)
           }));
     }
     #endregion

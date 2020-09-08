@@ -55,16 +55,16 @@ namespace SkyWalking.NetworkProtocol {
             "b2xiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::SkyWalking.NetworkProtocol.DownstreamReflection.Descriptor, global::SkyWalking.NetworkProtocol.TraceCommonReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ApplicationInstance), global::SkyWalking.NetworkProtocol.ApplicationInstance.Parser, new[]{ "ApplicationId", "AgentUUID", "RegisterTime", "Osinfo" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ApplicationInstanceMapping), global::SkyWalking.NetworkProtocol.ApplicationInstanceMapping.Parser, new[]{ "ApplicationId", "ApplicationInstanceId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ApplicationInstanceRecover), global::SkyWalking.NetworkProtocol.ApplicationInstanceRecover.Parser, new[]{ "ApplicationId", "ApplicationInstanceId", "RegisterTime", "Osinfo" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ApplicationInstanceHeartbeat), global::SkyWalking.NetworkProtocol.ApplicationInstanceHeartbeat.Parser, new[]{ "ApplicationInstanceId", "HeartbeatTime" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.OSInfo), global::SkyWalking.NetworkProtocol.OSInfo.Parser, new[]{ "OsName", "Hostname", "ProcessNo", "Ipv4S" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceNameCollection), global::SkyWalking.NetworkProtocol.ServiceNameCollection.Parser, new[]{ "Elements" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceNameMappingCollection), global::SkyWalking.NetworkProtocol.ServiceNameMappingCollection.Parser, new[]{ "Elements" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceNameMappingElement), global::SkyWalking.NetworkProtocol.ServiceNameMappingElement.Parser, new[]{ "ServiceId", "Element" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceNameElement), global::SkyWalking.NetworkProtocol.ServiceNameElement.Parser, new[]{ "ServiceName", "ApplicationId", "SrcSpanType" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ApplicationInstance), global::SkyWalking.NetworkProtocol.ApplicationInstance.Parser, new[]{ "ApplicationId", "AgentUUID", "RegisterTime", "Osinfo" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ApplicationInstanceMapping), global::SkyWalking.NetworkProtocol.ApplicationInstanceMapping.Parser, new[]{ "ApplicationId", "ApplicationInstanceId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ApplicationInstanceRecover), global::SkyWalking.NetworkProtocol.ApplicationInstanceRecover.Parser, new[]{ "ApplicationId", "ApplicationInstanceId", "RegisterTime", "Osinfo" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ApplicationInstanceHeartbeat), global::SkyWalking.NetworkProtocol.ApplicationInstanceHeartbeat.Parser, new[]{ "ApplicationInstanceId", "HeartbeatTime" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.OSInfo), global::SkyWalking.NetworkProtocol.OSInfo.Parser, new[]{ "OsName", "Hostname", "ProcessNo", "Ipv4S" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceNameCollection), global::SkyWalking.NetworkProtocol.ServiceNameCollection.Parser, new[]{ "Elements" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceNameMappingCollection), global::SkyWalking.NetworkProtocol.ServiceNameMappingCollection.Parser, new[]{ "Elements" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceNameMappingElement), global::SkyWalking.NetworkProtocol.ServiceNameMappingElement.Parser, new[]{ "ServiceId", "Element" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceNameElement), global::SkyWalking.NetworkProtocol.ServiceNameElement.Parser, new[]{ "ServiceName", "ApplicationId", "SrcSpanType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -1493,7 +1493,7 @@ namespace SkyWalking.NetworkProtocol {
 
     /// <summary>Field number for the "srcSpanType" field.</summary>
     public const int SrcSpanTypeFieldNumber = 3;
-    private global::SkyWalking.NetworkProtocol.SpanType srcSpanType_ = 0;
+    private global::SkyWalking.NetworkProtocol.SpanType srcSpanType_ = global::SkyWalking.NetworkProtocol.SpanType.Entry;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::SkyWalking.NetworkProtocol.SpanType SrcSpanType {
       get { return srcSpanType_; }
@@ -1526,7 +1526,7 @@ namespace SkyWalking.NetworkProtocol {
       int hash = 1;
       if (ServiceName.Length != 0) hash ^= ServiceName.GetHashCode();
       if (ApplicationId != 0) hash ^= ApplicationId.GetHashCode();
-      if (SrcSpanType != 0) hash ^= SrcSpanType.GetHashCode();
+      if (SrcSpanType != global::SkyWalking.NetworkProtocol.SpanType.Entry) hash ^= SrcSpanType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1548,7 +1548,7 @@ namespace SkyWalking.NetworkProtocol {
         output.WriteRawTag(16);
         output.WriteInt32(ApplicationId);
       }
-      if (SrcSpanType != 0) {
+      if (SrcSpanType != global::SkyWalking.NetworkProtocol.SpanType.Entry) {
         output.WriteRawTag(24);
         output.WriteEnum((int) SrcSpanType);
       }
@@ -1566,7 +1566,7 @@ namespace SkyWalking.NetworkProtocol {
       if (ApplicationId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(ApplicationId);
       }
-      if (SrcSpanType != 0) {
+      if (SrcSpanType != global::SkyWalking.NetworkProtocol.SpanType.Entry) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SrcSpanType);
       }
       if (_unknownFields != null) {
@@ -1586,7 +1586,7 @@ namespace SkyWalking.NetworkProtocol {
       if (other.ApplicationId != 0) {
         ApplicationId = other.ApplicationId;
       }
-      if (other.SrcSpanType != 0) {
+      if (other.SrcSpanType != global::SkyWalking.NetworkProtocol.SpanType.Entry) {
         SrcSpanType = other.SrcSpanType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);

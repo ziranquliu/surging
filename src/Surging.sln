@@ -111,7 +111,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surging.Core.Thrift", "Surg
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Surging.Tools", "Surging.Tools", "{78305463-1A38-4431-AFB0-0A0BE59D5A03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surging.Tools.Cli", "Surging.Tools\Surging.Tools.Cli\Surging.Tools.Cli.csproj", "{39B65A52-996E-4429-95DB-4731CD1EEAA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surging.Tools.Cli", "Surging.Tools\Surging.Tools.Cli\Surging.Tools.Cli.csproj", "{39B65A52-996E-4429-95DB-4731CD1EEAA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

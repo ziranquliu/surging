@@ -64,21 +64,21 @@ namespace SkyWalking.NetworkProtocol {
             "ZXR3b3JrUHJvdG9jb2xiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::SkyWalking.NetworkProtocol.CommonReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Services), global::SkyWalking.NetworkProtocol.Services.Parser, new[]{ "Services_" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Service), global::SkyWalking.NetworkProtocol.Service.Parser, new[]{ "ServiceName", "Tags", "Properties" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceRegisterMapping), global::SkyWalking.NetworkProtocol.ServiceRegisterMapping.Parser, new[]{ "Services" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceInstances), global::SkyWalking.NetworkProtocol.ServiceInstances.Parser, new[]{ "Instances" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceInstance), global::SkyWalking.NetworkProtocol.ServiceInstance.Parser, new[]{ "ServiceId", "InstanceUUID", "Time", "Tags", "Properties" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceInstanceRegisterMapping), global::SkyWalking.NetworkProtocol.ServiceInstanceRegisterMapping.Parser, new[]{ "ServiceInstances" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.NetAddresses), global::SkyWalking.NetworkProtocol.NetAddresses.Parser, new[]{ "Addresses" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.NetAddressMapping), global::SkyWalking.NetworkProtocol.NetAddressMapping.Parser, new[]{ "AddressIds" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Enpoints), global::SkyWalking.NetworkProtocol.Enpoints.Parser, new[]{ "Endpoints" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Endpoint), global::SkyWalking.NetworkProtocol.Endpoint.Parser, new[]{ "ServiceId", "EndpointName", "Tags", "Properties", "From" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.EndpointMapping), global::SkyWalking.NetworkProtocol.EndpointMapping.Parser, new[]{ "Elements" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.EndpointMappingElement), global::SkyWalking.NetworkProtocol.EndpointMappingElement.Parser, new[]{ "ServiceId", "EndpointName", "EndpointId", "From" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceAndNetworkAddressMappings), global::SkyWalking.NetworkProtocol.ServiceAndNetworkAddressMappings.Parser, new[]{ "Mappings" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceAndNetworkAddressMapping), global::SkyWalking.NetworkProtocol.ServiceAndNetworkAddressMapping.Parser, new[]{ "ServiceId", "ServiceInstanceId", "NetworkAddress", "NetworkAddressId" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Services), global::SkyWalking.NetworkProtocol.Services.Parser, new[]{ "Services_" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Service), global::SkyWalking.NetworkProtocol.Service.Parser, new[]{ "ServiceName", "Tags", "Properties" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceRegisterMapping), global::SkyWalking.NetworkProtocol.ServiceRegisterMapping.Parser, new[]{ "Services" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceInstances), global::SkyWalking.NetworkProtocol.ServiceInstances.Parser, new[]{ "Instances" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceInstance), global::SkyWalking.NetworkProtocol.ServiceInstance.Parser, new[]{ "ServiceId", "InstanceUUID", "Time", "Tags", "Properties" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceInstanceRegisterMapping), global::SkyWalking.NetworkProtocol.ServiceInstanceRegisterMapping.Parser, new[]{ "ServiceInstances" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.NetAddresses), global::SkyWalking.NetworkProtocol.NetAddresses.Parser, new[]{ "Addresses" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.NetAddressMapping), global::SkyWalking.NetworkProtocol.NetAddressMapping.Parser, new[]{ "AddressIds" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Enpoints), global::SkyWalking.NetworkProtocol.Enpoints.Parser, new[]{ "Endpoints" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.Endpoint), global::SkyWalking.NetworkProtocol.Endpoint.Parser, new[]{ "ServiceId", "EndpointName", "Tags", "Properties", "From" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.EndpointMapping), global::SkyWalking.NetworkProtocol.EndpointMapping.Parser, new[]{ "Elements" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.EndpointMappingElement), global::SkyWalking.NetworkProtocol.EndpointMappingElement.Parser, new[]{ "ServiceId", "EndpointName", "EndpointId", "From" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceAndNetworkAddressMappings), global::SkyWalking.NetworkProtocol.ServiceAndNetworkAddressMappings.Parser, new[]{ "Mappings" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ServiceAndNetworkAddressMapping), global::SkyWalking.NetworkProtocol.ServiceAndNetworkAddressMapping.Parser, new[]{ "ServiceId", "ServiceInstanceId", "NetworkAddress", "NetworkAddressId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -1421,7 +1421,7 @@ namespace SkyWalking.NetworkProtocol {
 
     /// <summary>Field number for the "from" field.</summary>
     public const int FromFieldNumber = 5;
-    private global::SkyWalking.NetworkProtocol.DetectPoint from_ = 0;
+    private global::SkyWalking.NetworkProtocol.DetectPoint from_ = global::SkyWalking.NetworkProtocol.DetectPoint.Client;
     /// <summary>
     /// For endpoint
     /// from DetectPoint is either `client` or `server`. No chance to be `proxy`.
@@ -1462,7 +1462,7 @@ namespace SkyWalking.NetworkProtocol {
       if (EndpointName.Length != 0) hash ^= EndpointName.GetHashCode();
       hash ^= tags_.GetHashCode();
       hash ^= properties_.GetHashCode();
-      if (From != 0) hash ^= From.GetHashCode();
+      if (From != global::SkyWalking.NetworkProtocol.DetectPoint.Client) hash ^= From.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1486,7 +1486,7 @@ namespace SkyWalking.NetworkProtocol {
       }
       tags_.WriteTo(output, _repeated_tags_codec);
       properties_.WriteTo(output, _repeated_properties_codec);
-      if (From != 0) {
+      if (From != global::SkyWalking.NetworkProtocol.DetectPoint.Client) {
         output.WriteRawTag(40);
         output.WriteEnum((int) From);
       }
@@ -1506,7 +1506,7 @@ namespace SkyWalking.NetworkProtocol {
       }
       size += tags_.CalculateSize(_repeated_tags_codec);
       size += properties_.CalculateSize(_repeated_properties_codec);
-      if (From != 0) {
+      if (From != global::SkyWalking.NetworkProtocol.DetectPoint.Client) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) From);
       }
       if (_unknownFields != null) {
@@ -1528,7 +1528,7 @@ namespace SkyWalking.NetworkProtocol {
       }
       tags_.Add(other.tags_);
       properties_.Add(other.properties_);
-      if (other.From != 0) {
+      if (other.From != global::SkyWalking.NetworkProtocol.DetectPoint.Client) {
         From = other.From;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -1761,7 +1761,7 @@ namespace SkyWalking.NetworkProtocol {
 
     /// <summary>Field number for the "from" field.</summary>
     public const int FromFieldNumber = 4;
-    private global::SkyWalking.NetworkProtocol.DetectPoint from_ = 0;
+    private global::SkyWalking.NetworkProtocol.DetectPoint from_ = global::SkyWalking.NetworkProtocol.DetectPoint.Client;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::SkyWalking.NetworkProtocol.DetectPoint From {
       get { return from_; }
@@ -1796,7 +1796,7 @@ namespace SkyWalking.NetworkProtocol {
       if (ServiceId != 0) hash ^= ServiceId.GetHashCode();
       if (EndpointName.Length != 0) hash ^= EndpointName.GetHashCode();
       if (EndpointId != 0) hash ^= EndpointId.GetHashCode();
-      if (From != 0) hash ^= From.GetHashCode();
+      if (From != global::SkyWalking.NetworkProtocol.DetectPoint.Client) hash ^= From.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1822,7 +1822,7 @@ namespace SkyWalking.NetworkProtocol {
         output.WriteRawTag(24);
         output.WriteInt32(EndpointId);
       }
-      if (From != 0) {
+      if (From != global::SkyWalking.NetworkProtocol.DetectPoint.Client) {
         output.WriteRawTag(32);
         output.WriteEnum((int) From);
       }
@@ -1843,7 +1843,7 @@ namespace SkyWalking.NetworkProtocol {
       if (EndpointId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(EndpointId);
       }
-      if (From != 0) {
+      if (From != global::SkyWalking.NetworkProtocol.DetectPoint.Client) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) From);
       }
       if (_unknownFields != null) {
@@ -1866,7 +1866,7 @@ namespace SkyWalking.NetworkProtocol {
       if (other.EndpointId != 0) {
         EndpointId = other.EndpointId;
       }
-      if (other.From != 0) {
+      if (other.From != global::SkyWalking.NetworkProtocol.DetectPoint.Client) {
         From = other.From;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);

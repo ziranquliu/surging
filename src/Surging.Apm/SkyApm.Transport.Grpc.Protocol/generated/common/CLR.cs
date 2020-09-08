@@ -37,10 +37,10 @@ namespace SkyWalking.NetworkProtocol {
             "aW5nLk5ldHdvcmtQcm90b2NvbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::SkyWalking.NetworkProtocol.CommonReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.CLRMetric), global::SkyWalking.NetworkProtocol.CLRMetric.Parser, new[]{ "Time", "Cpu", "Gc", "Thread" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ClrGC), global::SkyWalking.NetworkProtocol.ClrGC.Parser, new[]{ "Gen0CollectCount", "Gen1CollectCount", "Gen2CollectCount", "HeapMemory" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ClrThread), global::SkyWalking.NetworkProtocol.ClrThread.Parser, new[]{ "AvailableCompletionPortThreads", "AvailableWorkerThreads", "MaxCompletionPortThreads", "MaxWorkerThreads" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.CLRMetric), global::SkyWalking.NetworkProtocol.CLRMetric.Parser, new[]{ "Time", "Cpu", "Gc", "Thread" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ClrGC), global::SkyWalking.NetworkProtocol.ClrGC.Parser, new[]{ "Gen0CollectCount", "Gen1CollectCount", "Gen2CollectCount", "HeapMemory" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SkyWalking.NetworkProtocol.ClrThread), global::SkyWalking.NetworkProtocol.ClrThread.Parser, new[]{ "AvailableCompletionPortThreads", "AvailableWorkerThreads", "MaxCompletionPortThreads", "MaxWorkerThreads" }, null, null, null, null)
           }));
     }
     #endregion

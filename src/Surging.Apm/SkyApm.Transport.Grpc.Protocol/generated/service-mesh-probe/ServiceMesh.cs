@@ -40,9 +40,9 @@ public static partial class ServiceMeshReflection {
           "dG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::SkyWalking.NetworkProtocol.CommonReflection.Descriptor, },
-        new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol), }, new pbr::GeneratedClrTypeInfo[] {
-          new pbr::GeneratedClrTypeInfo(typeof(global::ServiceMeshMetric), global::ServiceMeshMetric.Parser, new[]{ "StartTime", "EndTime", "SourceServiceName", "SourceServiceId", "SourceServiceInstance", "SourceServiceInstanceId", "DestServiceName", "DestServiceId", "DestServiceInstance", "DestServiceInstanceId", "Endpoint", "Latency", "ResponseCode", "Status", "Protocol", "DetectPoint" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::MeshProbeDownstream), global::MeshProbeDownstream.Parser, null, null, null, null)
+        new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(typeof(global::ServiceMeshMetric), global::ServiceMeshMetric.Parser, new[]{ "StartTime", "EndTime", "SourceServiceName", "SourceServiceId", "SourceServiceInstance", "SourceServiceInstanceId", "DestServiceName", "DestServiceId", "DestServiceInstance", "DestServiceInstanceId", "Endpoint", "Latency", "ResponseCode", "Status", "Protocol", "DetectPoint" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::MeshProbeDownstream), global::MeshProbeDownstream.Parser, null, null, null, null, null)
         }));
   }
   #endregion
@@ -262,7 +262,7 @@ public sealed partial class ServiceMeshMetric : pb::IMessage<ServiceMeshMetric> 
 
   /// <summary>Field number for the "protocol" field.</summary>
   public const int ProtocolFieldNumber = 15;
-  private global::Protocol protocol_ = 0;
+  private global::Protocol protocol_ = global::Protocol.Http;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::Protocol Protocol {
     get { return protocol_; }
@@ -273,7 +273,7 @@ public sealed partial class ServiceMeshMetric : pb::IMessage<ServiceMeshMetric> 
 
   /// <summary>Field number for the "detectPoint" field.</summary>
   public const int DetectPointFieldNumber = 16;
-  private global::SkyWalking.NetworkProtocol.DetectPoint detectPoint_ = 0;
+  private global::SkyWalking.NetworkProtocol.DetectPoint detectPoint_ = global::SkyWalking.NetworkProtocol.DetectPoint.Client;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::SkyWalking.NetworkProtocol.DetectPoint DetectPoint {
     get { return detectPoint_; }
@@ -331,8 +331,8 @@ public sealed partial class ServiceMeshMetric : pb::IMessage<ServiceMeshMetric> 
     if (Latency != 0) hash ^= Latency.GetHashCode();
     if (ResponseCode != 0) hash ^= ResponseCode.GetHashCode();
     if (Status != false) hash ^= Status.GetHashCode();
-    if (Protocol != 0) hash ^= Protocol.GetHashCode();
-    if (DetectPoint != 0) hash ^= DetectPoint.GetHashCode();
+    if (Protocol != global::Protocol.Http) hash ^= Protocol.GetHashCode();
+    if (DetectPoint != global::SkyWalking.NetworkProtocol.DetectPoint.Client) hash ^= DetectPoint.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -402,11 +402,11 @@ public sealed partial class ServiceMeshMetric : pb::IMessage<ServiceMeshMetric> 
       output.WriteRawTag(112);
       output.WriteBool(Status);
     }
-    if (Protocol != 0) {
+    if (Protocol != global::Protocol.Http) {
       output.WriteRawTag(120);
       output.WriteEnum((int) Protocol);
     }
-    if (DetectPoint != 0) {
+    if (DetectPoint != global::SkyWalking.NetworkProtocol.DetectPoint.Client) {
       output.WriteRawTag(128, 1);
       output.WriteEnum((int) DetectPoint);
     }
@@ -460,10 +460,10 @@ public sealed partial class ServiceMeshMetric : pb::IMessage<ServiceMeshMetric> 
     if (Status != false) {
       size += 1 + 1;
     }
-    if (Protocol != 0) {
+    if (Protocol != global::Protocol.Http) {
       size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Protocol);
     }
-    if (DetectPoint != 0) {
+    if (DetectPoint != global::SkyWalking.NetworkProtocol.DetectPoint.Client) {
       size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) DetectPoint);
     }
     if (_unknownFields != null) {
@@ -519,10 +519,10 @@ public sealed partial class ServiceMeshMetric : pb::IMessage<ServiceMeshMetric> 
     if (other.Status != false) {
       Status = other.Status;
     }
-    if (other.Protocol != 0) {
+    if (other.Protocol != global::Protocol.Http) {
       Protocol = other.Protocol;
     }
-    if (other.DetectPoint != 0) {
+    if (other.DetectPoint != global::SkyWalking.NetworkProtocol.DetectPoint.Client) {
       DetectPoint = other.DetectPoint;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);

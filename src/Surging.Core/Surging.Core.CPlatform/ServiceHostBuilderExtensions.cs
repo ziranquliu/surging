@@ -93,7 +93,8 @@ namespace Surging.Core.CPlatform
                 var configBuilder = container.Resolve<IConfigurationBuilder>();
                 var appSettingPath = Path.Combine(AppConfig.ServerOptions.RootPath, "appsettings.json");
                 configBuilder.AddCPlatformFile("${appsettingspath}|" + appSettingPath, optional: false, reloadOnChange: true);
-                builder.Update(container);
+                //builder.Update(container);
+                builder.RegisterInstance(configBuilder).As<IConfigurationBuilder>();
             }
         }
 
