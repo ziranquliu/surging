@@ -21,7 +21,7 @@ namespace Surging.Core.Caching
         {
             ServiceResolver.Current.Register(null, Activator.CreateInstance(typeof(HashAlgorithm), new object[] { }));
             _cacheWrapperSetting = Configuration.Get<CachingProvider>();
-            RegisterConfigInstance();
+            //RegisterConfigInstance();
             RegisterLocalInstance("ICacheClient`1");
             InitSettingMethod();
         }

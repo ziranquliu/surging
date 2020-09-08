@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Surging.Core.Caching;
 using System.Text.RegularExpressions;
+using Surging.Core.CPlatform.Cache;
 
 namespace Surging.Core.ApiGateWay.OAuth
 {
