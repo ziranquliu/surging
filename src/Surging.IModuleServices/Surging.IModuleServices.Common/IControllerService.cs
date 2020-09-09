@@ -11,12 +11,25 @@ using System.Threading.Tasks;
 
 namespace Surging.IModuleServices.Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ServiceBundle("Device/{Service}")] 
     public interface IControllerService : IServiceKey
     { 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
         [Command(ShuntStrategy = AddressSelectorMode.HashAlgorithm)]
         Task Publish(string deviceId, WillMessage message);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
         [Command(ShuntStrategy = AddressSelectorMode.HashAlgorithm)]
         Task<bool> IsOnline(string deviceId);
     }

@@ -12,24 +12,27 @@ namespace Surging.Tools.Cli.Internal.Netty
 {
     public class DotnettyTransportClient : ITransportClient
     {
-
         private readonly IMessageSender _messageSender;
-        private readonly IMessageListener _messageListener; 
+        private readonly IMessageListener _messageListener;
 
         private readonly ConcurrentDictionary<string, TaskCompletionSource<TransportMessage>> _resultDictionary =
             new ConcurrentDictionary<string, TaskCompletionSource<TransportMessage>>();
 
         private readonly CommandLineApplication<CurlCommand> _app;
-        private readonly IHttpClientProvider _httpClientProvider;
+        //private readonly IHttpClientProvider _httpClientProvider;
 
         public DotnettyTransportClient(IMessageSender messageSender, IMessageListener messageListener, CommandLineApplication app)
         {
             _app = app as CommandLineApplication<CurlCommand>;
             _messageSender = messageSender;
-            _messageListener = messageListener; 
+            _messageListener = messageListener;
             messageListener.Received += MessageListener_Received;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<RemoteInvokeResultMessage> SendAsync(CancellationToken cancellationToken)
         {
             try
@@ -51,7 +54,7 @@ namespace Surging.Tools.Cli.Internal.Netty
                 {
                     await _messageSender.SendAndFlushAsync(transportMessage);
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -64,7 +67,11 @@ namespace Surging.Tools.Cli.Internal.Netty
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private async Task<RemoteInvokeResultMessage> RegisterResultCallbackAsync(string id)
         {
             var task = new TaskCompletionSource<TransportMessage>();
@@ -77,15 +84,18 @@ namespace Surging.Tools.Cli.Internal.Netty
             finally
             {
                 //删除回调任务
-                TaskCompletionSource<TransportMessage> value;
-                _resultDictionary.TryRemove(id, out value);
+                _resultDictionary.TryRemove(id, out _);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
         private async Task MessageListener_Received(IMessageSender sender, TransportMessage message)
         {
-            TaskCompletionSource<TransportMessage> task;
-            if (!_resultDictionary.TryGetValue(message.Id, out task))
+            if (!_resultDictionary.TryGetValue(message.Id, out TaskCompletionSource<TransportMessage> task))
                 return;
 
             if (message.IsInvokeResultMessage())

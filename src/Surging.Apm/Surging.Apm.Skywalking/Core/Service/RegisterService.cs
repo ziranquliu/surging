@@ -63,7 +63,7 @@ namespace Surging.Apm.Skywalking.Core.Service
             {
                 var request = new ServiceRequest
                 {
-                    ServiceName = _config.ServiceName ?? _config.ApplicationCode
+                    ServiceName = _config.ServiceName
                 };
                 var value = await Polling(3,
                     () => _serviceRegister.RegisterServiceAsync(request, cancellationToken),

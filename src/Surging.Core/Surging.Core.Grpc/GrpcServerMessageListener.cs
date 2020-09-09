@@ -42,8 +42,7 @@ namespace Surging.Core.Grpc
                     var methodInfo = definitionType?.GetMethod("BindService", new Type[] { baseType });
                     if (methodInfo != null)
                     {
-                        var serviceDescriptor = methodInfo.Invoke(null, new object[] { entry.Behavior }) as ServerServiceDefinition;
-                        if (serviceDescriptor != null)
+                        if (methodInfo.Invoke(null, new object[] { entry.Behavior }) is ServerServiceDefinition serviceDescriptor)
                         {
                             _server.Services.Add(serviceDescriptor);
                             continue;

@@ -64,7 +64,7 @@ namespace Surging.Apm.Skywalking.Core.Service
             if (!RuntimeEnvironment.ServiceId.HasValue)
             {
                 var value = await Polling(3,
-                    () => skyApmClient.RegisterApplicationAsync(_config.ServiceName ?? _config.ApplicationCode, cancellationToken),
+                    () => skyApmClient.RegisterApplicationAsync(_config.ServiceName, cancellationToken),
                     cancellationToken);
                 if (value.HasValue && RuntimeEnvironment is RuntimeEnvironment environment)
                 {

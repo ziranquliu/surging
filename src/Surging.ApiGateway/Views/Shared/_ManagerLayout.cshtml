@@ -8,10 +8,9 @@
 }
 <div id="wrapper" class="pc-feed-content">
     <div class="work-page pc-switch-page" data-class="work-skin" style="left:0px;">
-        @Html.Partial("Partial/ManageNav")
+        @await Html.PartialAsync("Partial/ManageNav")
         <section id="work" class="pc-content">
             @RenderBody()
-
         </section>
     </div>
     <div class="pc-tools-bar hidden-xs">

@@ -66,7 +66,7 @@ namespace Surging.Core.EventBusRabbitMQ
                     VirtualHost = option.VirtualHost,
                     Port = int.Parse(option.Port),
                 };
-                factory.RequestedHeartbeat = 60;
+                factory.RequestedHeartbeat = TimeSpan.FromSeconds(60);
                 AppConfig.BrokerName = option.BrokerName;
                 AppConfig.MessageTTL = option.MessageTTL;
                 AppConfig.RetryCount = option.RetryCount;

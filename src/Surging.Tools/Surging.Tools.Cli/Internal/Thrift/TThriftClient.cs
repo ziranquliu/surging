@@ -58,7 +58,7 @@ namespace Surging.Tools.Cli.Internal.Thrift
                     await _channelHandler.ChannelRead(_protocol);
 
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
                     throw ;
                 }
@@ -85,17 +85,15 @@ namespace Surging.Tools.Cli.Internal.Thrift
             finally
             {
                 //删除回调任务
-                TaskCompletionSource<TransportMessage> value;
-                _resultDictionary.TryRemove(id, out value);
-               //value.SetCanceled();
+                _resultDictionary.TryRemove(id, out _);
+                //value.SetCanceled();
 
             }
         }
 
         private  Task MessageListener_Received(IMessageSender sender, TransportMessage message)
         {
-            TaskCompletionSource<TransportMessage> task;
-            if (!_resultDictionary.TryGetValue(message.Id, out task))
+            if (!_resultDictionary.TryGetValue(message.Id, out TaskCompletionSource<TransportMessage> task))
                 return Task.CompletedTask;
 
             if (message.IsInvokeResultMessage())

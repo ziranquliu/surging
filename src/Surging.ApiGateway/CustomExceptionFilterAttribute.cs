@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Hosting;
 using Surging.Core.ApiGateWay;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,11 @@ namespace Surging.ApiGateway
 {
     public class CustomExceptionFilterAttribute : ExceptionFilterAttribute
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IModelMetadataProvider _modelMetadataProvider;
 
         public CustomExceptionFilterAttribute(
-            IHostingEnvironment hostingEnvironment,
+            IWebHostEnvironment hostingEnvironment,
             IModelMetadataProvider modelMetadataProvider)
         {
             _hostingEnvironment = hostingEnvironment;

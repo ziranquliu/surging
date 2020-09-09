@@ -236,7 +236,7 @@ namespace Surging.Core.EventBusRabbitMQ.Implementation
             consumer.Received += async (model, ea) =>
             {
                 var eventName = ea.RoutingKey;
-                await ProcessEvent(eventName, ea.Body, mode, ea.BasicProperties);
+                await ProcessEvent(eventName, ea.Body.ToArray(), mode, ea.BasicProperties);
                 channel.BasicAck(ea.DeliveryTag, false);
             };
             if (bindConsumer)
@@ -277,7 +277,7 @@ namespace Surging.Core.EventBusRabbitMQ.Implementation
             consumer.Received += async (model, ea) =>
             {
                 var eventName = ea.RoutingKey;
-                await ProcessEvent(eventName, ea.Body, mode,ea.BasicProperties);
+                await ProcessEvent(eventName, ea.Body.ToArray(), mode,ea.BasicProperties);
                 channel.BasicAck(ea.DeliveryTag, false);
             };
             if (bindConsumer)
@@ -316,7 +316,7 @@ namespace Surging.Core.EventBusRabbitMQ.Implementation
             consumer.Received += async (model, ea) =>
             {
                 var eventName = ea.RoutingKey;
-                await ProcessEvent(eventName, ea.Body, mode, ea.BasicProperties);
+                await ProcessEvent(eventName, ea.Body.ToArray(), mode, ea.BasicProperties);
                 channel.BasicAck(ea.DeliveryTag, false);
             };
             if (bindConsumer)
@@ -375,7 +375,7 @@ namespace Surging.Core.EventBusRabbitMQ.Implementation
                                     if (!headers.ContainsKey("x-orig-routing-key"))
                                         headers.Add("x-orig-routing-key", GetOrigRoutingKey(properties, eventName));
                                     retryCount = rollbackCount;
-                                    channel.BasicPublish(_exchanges[QueueConsumerMode.Fail], eventName, CreateOverrideProperties(properties, headers), body);
+                                    channel.BasicPublish(_exchanges[QueueConsumerMode.Fail], eventName, CreateOverrideProperties(properties, channel.CreateBasicProperties(), headers), body);
 
                                 }
                             }
@@ -388,7 +388,7 @@ namespace Surging.Core.EventBusRabbitMQ.Implementation
                                 }
                                 if (!headers.ContainsKey("x-orig-routing-key"))
                                     headers.Add("x-orig-routing-key", GetOrigRoutingKey(properties, eventName)); 
-                                channel.BasicPublish(_exchanges[QueueConsumerMode.Retry], eventName, CreateOverrideProperties(properties, headers), body);
+                                channel.BasicPublish(_exchanges[QueueConsumerMode.Retry], eventName, CreateOverrideProperties(properties, channel.CreateBasicProperties(), headers), body);
                             }
                         }
                     }
@@ -412,9 +412,9 @@ namespace Surging.Core.EventBusRabbitMQ.Implementation
         }
 
         private IBasicProperties CreateOverrideProperties(IBasicProperties properties,
-    IDictionary<String, Object> headers)
+            IBasicProperties newProperties,
+            IDictionary<String, Object> headers)
         {
-            IBasicProperties newProperties = new BasicProperties();
             newProperties.ContentType = properties.ContentType ?? "";
             newProperties.ContentEncoding = properties.ContentEncoding ?? "";
             newProperties.Headers = properties.Headers;

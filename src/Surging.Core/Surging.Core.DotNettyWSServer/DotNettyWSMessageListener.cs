@@ -30,7 +30,7 @@ namespace Surging.Core.DotNettyWSServer
 
         private readonly ILogger<DotNettyWSMessageListener> _logger; 
         private IChannel _channel;
-        private List<WSServiceEntry> _wSServiceEntries;
+        private readonly List<WSServiceEntry> _wSServiceEntries;
         public event ReceivedDelegate Received;
 
         #endregion Field
@@ -95,7 +95,7 @@ namespace Surging.Core.DotNettyWSServer
                 if (_logger.IsEnabled(LogLevel.Debug))
                     _logger.LogDebug($"WS服务主机启动成功，监听地址：{endPoint}。");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 _logger.LogError($"WS服务主机启动失败，监听地址：{endPoint}。 ");
             }

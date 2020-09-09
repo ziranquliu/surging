@@ -8,10 +8,18 @@ using System.Threading.Tasks;
 
 namespace Surging.IModuleServices.Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ServiceBundle("Api/{Service}")]
     [BehaviorContract(IgnoreExtensions =true,Protocol = "media")]
     public interface IMediaService : IServiceKey
     { 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         Task Push(IEnumerable<byte> data);
     }
 

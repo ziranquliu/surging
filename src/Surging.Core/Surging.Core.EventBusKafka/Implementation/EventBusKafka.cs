@@ -42,7 +42,7 @@ namespace Surging.Core.EventBusKafka.Implementation
                 _consumerConnection.TryConnect();
             }
 
-            using (var channel = _consumerConnection.CreateConnect() as Consumer<Null, string>)
+            using (var channel = _consumerConnection.CreateConnect() as IConsumer<Null, string>)
             {
                 channel.Unsubscribe();
                 if (_subsManager.IsEmpty)
@@ -73,10 +73,10 @@ namespace Surging.Core.EventBusKafka.Implementation
                    _logger.LogWarning(ex.ToString());
                });
 
-            var conn = _producerConnection.CreateConnect() as Producer<Null, string>;
+            var conn = _producerConnection.CreateConnect() as IProducer<Null, string>;
             policy.Execute(() =>
            {
-               conn.ProduceAsync(eventName, null, body).GetAwaiter().GetResult();
+               conn.ProduceAsync(eventName, null).GetAwaiter().GetResult();
            });
         }
 
@@ -86,8 +86,8 @@ namespace Surging.Core.EventBusKafka.Implementation
             var containsKey = _subsManager.HasSubscriptionsForEvent<T>();
             if (!containsKey)
             {
-                var channel = _consumerConnection.CreateConnect() as Consumer<Null, string>;
-                channel.OnMessage += ConsumerClient_OnMessage;
+                var channel = _consumerConnection.CreateConnect() as IConsumer<Null, string>;
+                //channel.OnMessage += ConsumerClient_OnMessage;
                 channel.Subscribe(eventName);
             }
             _subsManager.AddSubscription<T, TH>(handler, null);
@@ -100,7 +100,7 @@ namespace Surging.Core.EventBusKafka.Implementation
         
         private void ConsumerClient_OnMessage(object sender, Message<Null, string> e)
         {
-            ProcessEvent(e.Topic, e.Value).Wait();
+            //ProcessEvent(e.Topic, e.Value).Wait();
         }
         
         private async Task ProcessEvent(string eventName, string message)

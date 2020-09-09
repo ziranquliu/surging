@@ -100,14 +100,14 @@ namespace Surging.Core.SwaggerGen
             else
             {
                 // TODO: Perhaps a "Chain of Responsibility" would clean this up a little?
-                if (jsonContract is JsonPrimitiveContract)
-                    schema = CreatePrimitiveSchema((JsonPrimitiveContract)jsonContract);
-                else if (jsonContract is JsonDictionaryContract)
-                    schema = CreateDictionarySchema(paramName,(JsonDictionaryContract)jsonContract, referencedTypes);
-                else if (jsonContract is JsonArrayContract)
-                    schema = CreateArraySchema((JsonArrayContract)jsonContract, referencedTypes);
-                else if (jsonContract is JsonObjectContract && type != typeof(object))
-                    schema = CreateObjectSchema((JsonObjectContract)jsonContract, referencedTypes);
+                if (jsonContract is JsonPrimitiveContract contract)
+                    schema = CreatePrimitiveSchema(contract);
+                else if (jsonContract is JsonDictionaryContract contract3)
+                    schema = CreateDictionarySchema(paramName,contract3, referencedTypes);
+                else if (jsonContract is JsonArrayContract contract2)
+                    schema = CreateArraySchema(contract2, referencedTypes);
+                else if (jsonContract is JsonObjectContract contract1 && type != typeof(object))
+                    schema = CreateObjectSchema(contract1, referencedTypes);
                 else
                     // None of the above, fallback to abstract "object"
                     schema = new Schema { Type = "object" };
@@ -147,7 +147,7 @@ namespace Surging.Core.SwaggerGen
             if (_options.DescribeAllEnumsAsStrings || stringEnumConverter != null)
             {
                 var camelCase = _options.DescribeStringEnumsInCamelCase
-                    || (stringEnumConverter != null && stringEnumConverter.CamelCaseText);
+                    || (stringEnumConverter != null && stringEnumConverter.NamingStrategy is CamelCaseNamingStrategy);
 
                 var enumNames = type.GetFields(BindingFlags.Public | BindingFlags.Static)
                     .Select(f =>

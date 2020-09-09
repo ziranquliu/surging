@@ -5,23 +5,34 @@ using Surging.Core.System.Intercept;
 
 namespace Surging.IModuleServices.Common.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ProtoContract]
     public class UserModel
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
         [ProtoMember(1)]
         [CacheKey(1)]
         public int UserId { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [ProtoMember(2)]
         [CacheKey(2)]
         public string Name { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [ProtoMember(3)]
         [Range(0, 150, ErrorMessage = "年龄只能在0到150岁之间")]
         [CacheKey(3)]
         public int Age { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         [ProtoMember(4)]
         [Range(0, 1, ErrorMessage = "性别只能选男或女")]
         public Sex Sex { get; set; }

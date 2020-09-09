@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace Surging.Core.Swagger.SwaggerUI
 {
-   public class SwaggerUIMiddleware
+    public class SwaggerUIMiddleware
     {
         private const string EmbeddedFileNamespace = "Surging.Core.Swagger.SwaggerUI.node_modules.swagger_ui_dist";
 
@@ -81,17 +81,15 @@ namespace Surging.Core.Swagger.SwaggerUI
             response.StatusCode = 200;
             response.ContentType = "text/html";
 
-            using (var stream = _options.IndexStream())
+            using var stream = _options.IndexStream();
+            // Inject arguments before writing to response
+            var htmlBuilder = new StringBuilder(new StreamReader(stream).ReadToEnd());
+            foreach (var entry in GetIndexArguments())
             {
-                // Inject arguments before writing to response
-                var htmlBuilder = new StringBuilder(new StreamReader(stream).ReadToEnd());
-                foreach (var entry in GetIndexArguments())
-                {
-                    htmlBuilder.Replace(entry.Key, entry.Value);
-                }
-
-                await response.WriteAsync(htmlBuilder.ToString(), Encoding.UTF8);
+                htmlBuilder.Replace(entry.Key, entry.Value);
             }
+
+            await response.WriteAsync(htmlBuilder.ToString(), Encoding.UTF8);
         }
 
         private IDictionary<string, string> GetIndexArguments()
@@ -110,7 +108,7 @@ namespace Surging.Core.Swagger.SwaggerUI
             return JsonConvert.SerializeObject(obj, new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                Converters = new[] { new StringEnumConverter(true) },
+                Converters = new[] { new StringEnumConverter(typeof(CamelCaseNamingStrategy)) },
                 NullValueHandling = NullValueHandling.Ignore,
                 Formatting = Formatting.None,
                 StringEscapeHandling = StringEscapeHandling.EscapeHtml

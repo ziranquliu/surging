@@ -21,19 +21,19 @@ namespace Surging.Core.ServiceHosting.Extensions
             serviceProvider.GetInstances<IServiceEngineLifetime>().ServiceEngineStarted.Register(() =>
             {
                 var provider = serviceProvider.GetInstances<IBackgroundServiceEntryProvider>();
-                var entries =  provider.GetEntries();
-                foreach(var entry in entries)
+                var entries = provider.GetEntries();
+                foreach (var entry in entries)
                 {
-                     var cts = new CancellationTokenSource();
-                    Task.Run(() =>
+                    var cts = new CancellationTokenSource();
+                    Task.Run(async () =>
                     {
                         try
                         {
-                            entry.Behavior.StartAsync(cts.Token);
+                            await entry.Behavior.StartAsync(cts.Token);
                         }
                         catch
                         {
-                            entry.Behavior.StopAsync(cts.Token);
+                            await entry.Behavior.StopAsync(cts.Token);
                         }
                     });
                 }

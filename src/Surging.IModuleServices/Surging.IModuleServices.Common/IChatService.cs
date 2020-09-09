@@ -11,10 +11,19 @@ using System.Threading.Tasks;
 
 namespace Surging.IModuleServices.Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ServiceBundle("Api/{Service}")]
     [BehaviorContract(IgnoreExtensions =true)]
     public  interface IChatService: IServiceKey
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [Command( ShuntStrategy=AddressSelectorMode.HashAlgorithm)]
         Task SendMessage(string name,string data);
     }

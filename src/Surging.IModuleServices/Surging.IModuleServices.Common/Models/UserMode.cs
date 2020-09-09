@@ -4,8 +4,18 @@ using System.Text;
 
 namespace Surging.IModuleServices.Common.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public enum Sex
     {
-        Man, Woman
+        /// <summary>
+        /// 
+        /// </summary>
+        Man, 
+        /// <summary>
+        /// 
+        /// </summary>
+        Woman
     }
 }

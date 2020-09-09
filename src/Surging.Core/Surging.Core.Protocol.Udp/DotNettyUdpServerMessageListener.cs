@@ -64,7 +64,7 @@ namespace Surging.Core.Protocol.Udp
                 if (_logger.IsEnabled(LogLevel.Debug))
                     _logger.LogDebug($"Udp服务主机启动成功，监听地址：{endPoint}。");
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 _logger.LogError($"Udp服务主机启动失败，监听地址：{endPoint}。 ");
             }

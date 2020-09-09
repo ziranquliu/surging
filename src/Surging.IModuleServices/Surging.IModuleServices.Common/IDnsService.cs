@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Surging.IModuleServices.Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ServiceBundle("Dns/{Service}")]
      public interface IDnsService : IServiceKey
     {

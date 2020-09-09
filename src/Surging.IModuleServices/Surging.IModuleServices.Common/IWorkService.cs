@@ -8,13 +8,27 @@ using System.Threading.Tasks;
 
 namespace Surging.IModuleServices.Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ServiceBundle("Background/{Service}")]
     public interface IWorkService : IServiceKey
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         Task<bool> AddWork(Message message);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
          Task StartAsync();
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         Task StopAsync();
     }
 }

@@ -6,7 +6,7 @@ namespace DotNetty.Codecs.DNS.Records
 {
     public class DefaultDnsOptEcsRecord : AbstractDnsOptPseudoRrRecord, IDnsOptEcsRecord
     {
-        private readonly int srcPrefixLength;
+        //private readonly int srcPrefixLength;
         private readonly byte[] address;
 
         public int SourcePrefixLength { get; }
@@ -19,7 +19,7 @@ namespace DotNetty.Codecs.DNS.Records
             int srcPrefixLength, byte[] address) : base(maxPayloadSize, extendedRcode, version)
         {
             SourcePrefixLength = srcPrefixLength;
-            address = VerifyAddress(address);
+            _ = VerifyAddress(address);
         }
 
         public DefaultDnsOptEcsRecord(int maxPayloadSize, int srcPrefixLength, byte[] address)
@@ -39,7 +39,7 @@ namespace DotNetty.Codecs.DNS.Records
         public override string ToString()
         {
             StringBuilder builder = GetBuilder();
-            builder.Length = builder.Length - 1;
+            builder.Length -= 1;
             return builder.Append(" address:")
                 .Append(string.Join(".", address, 0, address.Length))
                 .Append(" sourcePrefixLength:")

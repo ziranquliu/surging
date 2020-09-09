@@ -9,7 +9,7 @@ namespace Surging.Core.System.MongoProvider
 {
     internal static class Util
     {
-        private static IConfigurationRoot _config;
+        //private static IConfigurationRoot _config;
         private static IMongoDatabase GetDatabase(string connectString)
         {
             var mongoUrl = new MongoUrl(connectString);
@@ -23,7 +23,7 @@ namespace Surging.Core.System.MongoProvider
             return MongoConfig.DefaultInstance.MongConnectionString;
         }
 
-        public static IMongoCollection<T> GetCollectionFromConnectionString<T>(string connectionstring)
+        public static IMongoCollection<T> GetCollectionFromConnectionString<T>()
             where T : IEntity
         {
             return GetDatabase(GetDefaultConnectionString()).GetCollection<T>(GetCollectionName<T>());

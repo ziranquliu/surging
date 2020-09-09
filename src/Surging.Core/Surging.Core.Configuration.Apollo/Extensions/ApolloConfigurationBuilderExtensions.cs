@@ -14,7 +14,7 @@ namespace Surging.Core.Configuration.Apollo.Configurations
             builder.AddNamespaceSurgingApollo(@namespace, null, format);
 
         /// <summary>添加其他namespace。如果sectionKey为null则添加到root中，可以直接读取，否则使用Configuration.GetSection(sectionKey)读取</summary>
-        public static IApolloConfigurationBuilder AddNamespaceSurgingApollo(this IApolloConfigurationBuilder builder, string @namespace, string? sectionKey, ConfigFileFormat format = ConfigFileFormat.Json)
+        public static IApolloConfigurationBuilder AddNamespaceSurgingApollo(this IApolloConfigurationBuilder builder, string @namespace, string sectionKey, ConfigFileFormat format = ConfigFileFormat.Json)
         {
             if (string.IsNullOrWhiteSpace(@namespace)) throw new ArgumentNullException(nameof(@namespace));
             if (format < ConfigFileFormat.Properties || format > ConfigFileFormat.Txt) throw new ArgumentOutOfRangeException(nameof(format), format, $"最小值{ConfigFileFormat.Properties}，最大值{ConfigFileFormat.Txt}");

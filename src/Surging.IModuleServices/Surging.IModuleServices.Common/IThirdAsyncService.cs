@@ -9,12 +9,27 @@ using System.Threading.Tasks;
 
 namespace Surging.IModuleServices.Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ServiceBundle("api/{Service}/{Method}")]
     public interface IThirdAsyncService : ThriftCore.ThirdCalculator.IAsync, IServiceKey
     {
-        Task<int> @AddAsync(int num1, int num2, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="num1"></param>
+        /// <param name="num2"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<int> @AddAsync(int num1, int num2, CancellationToken cancellationToken = default);
 
-        Task<string> SayHelloAsync(CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<string> SayHelloAsync(CancellationToken cancellationToken = default);
     }
 }
 

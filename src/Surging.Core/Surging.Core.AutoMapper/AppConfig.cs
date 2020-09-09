@@ -49,7 +49,7 @@ namespace Surging.Core.AutoMapper
                                 var profile = Activator.CreateInstance(profileType) as Profile;
                                 profiles.Add(profile);
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
                                 if (logger.IsEnabled(LogLevel.Warning))
                                     logger.LogWarning($"构建profile失败,profile类型为{profileType.FullName}");
@@ -64,9 +64,8 @@ namespace Surging.Core.AutoMapper
 
         private static IEnumerable<Assembly> GetAllReferenceAssemblies()
         {
-            var serviceEngine = ServiceLocator.GetService<IServiceEngine>() as VirtualPathProviderServiceEngine;
             string[] paths = null;
-            if (serviceEngine != null)
+            if (ServiceLocator.GetService<IServiceEngine>() is VirtualPathProviderServiceEngine serviceEngine)
             {
                 if (serviceEngine.ModuleServiceLocationFormats != null)
                 {
@@ -77,7 +76,7 @@ namespace Surging.Core.AutoMapper
             return referenceAssemblies;
         }
 
-        private static List<Assembly> _referenceAssembly = new List<Assembly>();
+        private static readonly List<Assembly> _referenceAssembly = new List<Assembly>();
 
         public static IEnumerable<string> AssembliesStrings { get; internal set; }
 

@@ -71,13 +71,12 @@ namespace Surging.Core.Thrift
                     }
                     )).Value;//返回实例
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 //移除
                 _clients.TryRemove(key, out var value);
-                var ipEndPoint = endPoint as IPEndPoint;
                 //标记这个地址是失败的请求
-                if (ipEndPoint != null)
+                if (endPoint is IPEndPoint ipEndPoint)
                     await _healthCheckService.MarkFailure(new IpAddressModel(ipEndPoint.Address.ToString(), ipEndPoint.Port));
                 throw;
             }

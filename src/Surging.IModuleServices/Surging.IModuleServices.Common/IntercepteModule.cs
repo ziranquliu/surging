@@ -8,8 +8,15 @@ using System.Text;
 
 namespace Surging.IModuleServices.Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class IntercepteModule : SystemModule
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public override void Initialize(AppModuleContext context)
         {
             base.Initialize(context);
@@ -23,7 +30,7 @@ namespace Surging.IModuleServices.Common
         {
             base.RegisterBuilder(builder); 
             builder.AddClientIntercepted(typeof(CacheProviderInterceptor));
-           //builder.AddClientIntercepted(typeof(LogProviderInterceptor));
+            //builder.AddClientIntercepted(typeof(LogProviderInterceptor));
         }
     }
 }

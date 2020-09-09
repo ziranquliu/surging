@@ -19,7 +19,6 @@ using Surging.Core.CPlatform.Module;
 using Surging.Core.Consul.Internal.Implementation;
 using Surging.Core.Consul.Internal.Cluster.HealthChecks;
 using Surging.Core.Consul.Internal.Cluster.Implementation.Selectors;
-using Autofac;
 using Surging.Core.Consul.Internal.Cluster.HealthChecks.Implementation;
 
 namespace Surging.Core.Consul

@@ -20,6 +20,9 @@ using Metadatas=Surging.Core.ProxyGenerator.Interceptors.Implementation.Metadata
 
 namespace Surging.IModuleServices.Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ServiceBundle("api/{Service}/{Method}")]
     //[ServiceBundle("api/{Service}")]
     //[ServiceBundle("api/{Service}/{Method}/test")]
@@ -72,7 +75,10 @@ namespace Surging.IModuleServices.Common
        [Metadatas.ServiceLogIntercept()]
         [ServiceRoute("{userName}")]
         Task<int> GetUserId(string userName);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         Task Try();
 
         /// <summary>
@@ -129,6 +135,11 @@ new Surging.IModuleServices.Common.Models.UserModel
        /// <returns></returns>
         Task TryThrowException();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sex"></param>
+        /// <returns></returns>
         [ServiceRoute("{sex}")]
         Task<Sex> SetSex(Sex sex);
 
@@ -167,7 +178,7 @@ new Surging.IModuleServices.Common.Models.UserModel
         /// </summary>
         /// <param name="form">HttpFormCollection 类型参数</param>
         /// <returns></returns>
-        Task<bool> UploadFile(HttpFormCollection form1);
+        Task<bool> UploadFile(HttpFormCollection form);
 
         /// <summary>
         /// 测试下载文件
@@ -184,6 +195,11 @@ new Surging.IModuleServices.Common.Models.UserModel
         /// <returns></returns>
         Task<Dictionary<string, object>> GetAllThings();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [Metadatas.ServiceCacheIntercept(Metadatas.CachingMethod.Remove, "GetUser_{0}_{1}", CacheSectionType ="ddlCache", Mode = Metadatas.CacheTargetType.Redis)]
         public Task<bool> RemoveUser(UserModel user);
     }

@@ -40,8 +40,7 @@ namespace Surging.Core.Configuration.Apollo.Configurations
 
             foreach (var provider in providers)
             {
-                var fileConfigurationProvider = provider as FileConfigurationProvider;
-                if (fileConfigurationProvider != null)
+                if (provider is FileConfigurationProvider fileConfigurationProvider)
                 {
                     builder.Add(fileConfigurationProvider.Source);
                 }

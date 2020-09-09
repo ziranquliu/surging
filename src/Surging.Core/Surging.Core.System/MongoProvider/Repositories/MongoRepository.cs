@@ -21,7 +21,7 @@ namespace Surging.Core.System.MongoProvider.Repositories
 
         public MongoRepository(string connectionString)
         {
-            _collection = Util.GetCollectionFromConnectionString<T>(Util.GetDefaultConnectionString());
+            _collection = Util.GetCollectionFromConnectionString<T>(/*Util.GetDefaultConnectionString()*/);
         }
 
         public IMongoCollection<T> Collection
@@ -94,7 +94,7 @@ namespace Surging.Core.System.MongoProvider.Repositories
             }
             catch
             {
-                return default(T);
+                return default;
             }
         }
 
@@ -216,13 +216,13 @@ namespace Surging.Core.System.MongoProvider.Repositories
 
         public long Count(FilterDefinition<T> filter)
         {
-            var result = _collection.Count(filter);
+            var result = _collection.CountDocuments(filter);
             return result;
         }
 
         public async Task<long> CountAsync(FilterDefinition<T> filter)
         {
-            var result = await _collection.CountAsync(filter);
+            var result = await _collection.CountDocumentsAsync(filter);
             return result;
         }
 

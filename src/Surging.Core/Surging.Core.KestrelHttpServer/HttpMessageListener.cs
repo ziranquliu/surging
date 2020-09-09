@@ -27,7 +27,7 @@ namespace Surging.Core.KestrelHttpServer
         public event ReceivedDelegate Received;
         private readonly ILogger<HttpMessageListener> _logger;
         private readonly ISerializer<string> _serializer;
-        private event RequestDelegate Requested;
+        //private event RequestDelegate Requested;
         private readonly IServiceRouteProvider _serviceRouteProvider;
         private readonly string[] _serviceKeys = {  "serviceKey", "servicekey"};
 
@@ -271,16 +271,16 @@ namespace Surging.Core.KestrelHttpServer
             var elements = content.Split(';');
             var element = elements.Where(entry => entry.Trim().StartsWith(type)).FirstOrDefault()?.Trim();
             var name = element?.Substring(type.Length);
-            if (!string.IsNullOrEmpty(name) && name.Length >= 2 && name[0] == '"' && name[name.Length - 1] == '"')
+            if (!string.IsNullOrEmpty(name) && name.Length >= 2 && name[0] == '"' && name[^1] == '"')
             {
-                name = name.Substring(1, name.Length - 2);
+                name = name[1..^1];
             }
             return name;
         }
 
         private string GetRoutePath(string path)
         {
-            string routePath = "";
+            string routePath;
             var urlSpan = path.AsSpan();
             var len = urlSpan.IndexOf("?");
             if (urlSpan.LastIndexOf("/") == 0)

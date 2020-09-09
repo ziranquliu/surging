@@ -6,9 +6,15 @@ using System.Text;
 
 namespace Surging.IModuleServices.Common.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ProtoContract]
     public class BaseModel
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [ProtoMember(1)]
         public Guid Id => Guid.NewGuid();
     }

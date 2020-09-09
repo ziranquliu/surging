@@ -7,6 +7,7 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +22,7 @@ using Surging.Core.ApiGateWay.OAuth.Implementation.Configurations;
 using Surging.Core.Caching;
 using Surging.Core.Caching.Configurations;
 using Surging.Core.Codec.MessagePack;
+using Surging.Core.Codec.ProtoBuffer;
 using Surging.Core.Consul;
 using Surging.Core.Consul.Configurations;
 using Surging.Core.CPlatform;
@@ -64,9 +66,11 @@ namespace Surging.ApiGateway
         {
             var registerConfig = ApiGateWayConfig.Register;
             services.AddMvc(options => {
-                options.Filters.Add(typeof(CustomExceptionFilterAttribute));
                 options.EnableEndpointRouting = false;
-            }).AddJsonOptions(options => {
+                options.Filters.Add(typeof(CustomExceptionFilterAttribute));
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+            .AddJsonOptions(options => {
                 options.JsonSerializerOptions.Converters.Add(new DateTimeJsonConverter("yyyy-MM-dd HH:mm:ss"));
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
                 options.JsonSerializerOptions.DictionaryKeyPolicy = null;
@@ -92,7 +96,7 @@ namespace Surging.ApiGateway
                 option.AddRpcTransportDiagnostic();
                 option.UseSkywalking();
                 option.AddFilter(new ServiceExceptionFilter());
-                //option.UseProtoBufferCodec();
+                option.UseProtoBufferCodec();
                 option.UseMessagePackCodec();
                 builder.Register(m => new CPlatformContainer(ServiceLocator.Current));
             });
@@ -130,7 +134,7 @@ namespace Surging.ApiGateway
             }
             app.UseCors(builder =>
             {
-                var policy = Surging.Core.ApiGateWay.AppConfig.Policy;
+                var policy = ApiGateWayConfig.Policy;
                 if (policy.Origins != null)
                     builder.WithOrigins(policy.Origins);
                 if (policy.AllowAnyHeader)
@@ -146,6 +150,11 @@ namespace Surging.ApiGateway
             myProvider.Mappings.Add(".tpl", "text/plain");
             app.UseStaticFiles(new StaticFileOptions() { ContentTypeProvider = myProvider });
             app.UseStaticFiles();
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseAuthorization();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -157,19 +166,15 @@ namespace Surging.ApiGateway
                 "{*path}",
                 new { controller = "Services", action = "Path" });
             });
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
-            app.UseRouting();
+            //app.UseRouting();
 
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+            //});
         }
     }
 }

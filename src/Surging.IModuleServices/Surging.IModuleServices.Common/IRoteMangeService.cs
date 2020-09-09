@@ -7,11 +7,24 @@ using System.Threading.Tasks;
 
 namespace Surging.IModuleServices.Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ServiceBundle("Api/{Service}")]
     public interface IRoteMangeService
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serviceId"></param>
+        /// <returns></returns>
         Task<UserModel> GetServiceById(string serviceId);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         Task<bool> SetRote(RoteModel model);
     }
 }

@@ -34,7 +34,7 @@ namespace Surging.Core.KestrelHttpServer
     {
         private readonly ILogger<KestrelHttpMessageListener> _logger;
         private IWebHost _host;
-        private bool _isCompleted;
+        //private readonly bool _isCompleted;
         private readonly ISerializer<string> _serializer;
         private readonly IServiceEngineLifetime _lifetime;
         private readonly IModuleProvider _moduleProvider;
@@ -120,8 +120,8 @@ namespace Surging.Core.KestrelHttpServer
                 _moduleProvider.Modules,
                 _moduleProvider.VirtualPaths,
                 AppConfig.Configuration));
-            builder.Populate(services); 
-            builder.Update(_container.Current.ComponentRegistry);
+            builder.Populate(services);
+            //builder.Update(_container.Current.ComponentRegistry);
         }
 
         private void AppResolve(IApplicationBuilder app)

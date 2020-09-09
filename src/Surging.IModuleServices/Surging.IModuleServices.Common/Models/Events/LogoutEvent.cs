@@ -5,13 +5,22 @@ using System.Text;
 
 namespace Surging.IModuleServices.Common.Models.Events
 {
-   public class LogoutEvent : IntegrationEvent
+    /// <summary>
+    /// 
+    /// </summary>
+    public class LogoutEvent : IntegrationEvent
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public string UserId { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string Age { get; set; }
     }
 }
- 

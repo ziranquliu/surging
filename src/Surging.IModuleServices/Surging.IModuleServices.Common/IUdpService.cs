@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Surging.IModuleServices.Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ServiceBundle("Udp/{Service}")]
     public interface IUdpService : IServiceKey
     {

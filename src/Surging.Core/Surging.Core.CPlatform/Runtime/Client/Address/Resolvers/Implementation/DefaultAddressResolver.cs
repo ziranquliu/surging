@@ -21,7 +21,7 @@ namespace Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation
     {
         #region Field
 
-        private readonly IServiceRouteManager _serviceRouteManager;
+        //private readonly IServiceRouteManager _serviceRouteManager;
         private readonly ILogger<DefaultAddressResolver> _logger;
         private readonly IHealthCheckService _healthCheckService;
         private readonly CPlatformContainer _container;
@@ -29,8 +29,7 @@ namespace Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation
         private readonly ConcurrentDictionary<string, IAddressSelector> _addressSelectors=new
             ConcurrentDictionary<string, IAddressSelector>();
         private readonly IServiceCommandProvider _commandProvider;
-        private readonly ConcurrentDictionary<string, ServiceRoute> _concurrent =
-  new ConcurrentDictionary<string, ServiceRoute>();
+        //private readonly ConcurrentDictionary<string, ServiceRoute> _concurrent =  new ConcurrentDictionary<string, ServiceRoute>();
         private readonly IServiceHeartbeatManager _serviceHeartbeatManager;
         #endregion Field
 
