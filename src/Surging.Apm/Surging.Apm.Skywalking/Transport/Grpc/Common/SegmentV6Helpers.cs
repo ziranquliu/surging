@@ -35,9 +35,9 @@ namespace Surging.Apm.Skywalking.Transport.Grpc.Common
 
             var traceSegment = new SegmentObject
             {
-                TraceSegmentId = MapToUniqueId(request.Segment.SegmentId),
-                ServiceId = request.Segment.ServiceId,
-                ServiceInstanceId = request.Segment.ServiceInstanceId,
+                //TraceSegmentId = MapToUniqueId(request.Segment.SegmentId),
+                //ServiceId = request.Segment.ServiceId,
+                //ServiceInstanceId = request.Segment.ServiceInstanceId,
                 IsSizeLimited = false
             };
 
@@ -84,11 +84,11 @@ namespace Surging.Apm.Skywalking.Transport.Grpc.Common
         {
             var reference = new SegmentReference
             {
-                ParentServiceInstanceId = referenceRequest.ParentServiceInstanceId,
-                EntryServiceInstanceId = referenceRequest.EntryServiceInstanceId,
+                //ParentServiceInstanceId = referenceRequest.ParentServiceInstanceId,
+                //EntryServiceInstanceId = referenceRequest.EntryServiceInstanceId,
                 ParentSpanId = referenceRequest.ParentSpanId,
                 RefType = (RefType) referenceRequest.RefType,
-                ParentTraceSegmentId = MapToUniqueId(referenceRequest.ParentSegmentId)
+                //ParentTraceSegmentId = MapToUniqueId(referenceRequest.ParentSegmentId)
             };
 
             ReadStringOrIntValue(reference, referenceRequest.NetworkAddress, NetworkAddressReader,

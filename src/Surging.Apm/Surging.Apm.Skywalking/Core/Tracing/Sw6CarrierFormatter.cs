@@ -78,8 +78,8 @@ namespace Surging.Apm.Skywalking.Abstractions.Common.Tracing
             if (!int.TryParse(parts[5], out var entryServiceInstanceId))
                 return Defer();
 
-            var carrier = new Carrier(traceId, segmentId, parentSpanId, parentServiceInstanceId,
-                entryServiceInstanceId)
+            var carrier = new Carrier(traceId.ToString(), segmentId.ToString(), parentSpanId, parentServiceInstanceId.ToString(),
+                entryServiceInstanceId.ToString())
             {
                 NetworkAddress = StringOrIntValueHelpers.ParseStringOrIntValue(_base64Formatter.Decode(parts[6])),
                 Sampled = sampled != 0

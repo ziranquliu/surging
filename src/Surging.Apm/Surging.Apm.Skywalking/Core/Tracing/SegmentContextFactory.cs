@@ -20,6 +20,7 @@ using System;
 using System.Linq;
 using Surging.Apm.Skywalking.Abstractions;
 using Surging.Apm.Skywalking.Abstractions.Common;
+using Surging.Apm.Skywalking.Abstractions.Config;
 using Surging.Apm.Skywalking.Abstractions.Tracing;
 using Surging.Core.CPlatform.Diagnostics;
 
@@ -33,13 +34,15 @@ namespace Surging.Apm.Skywalking.Core.Tracing
         private readonly IRuntimeEnvironment _runtimeEnvironment;
         private readonly ISamplerChainBuilder _samplerChainBuilder;
         private readonly IUniqueIdGenerator _uniqueIdGenerator;
+        private readonly InstrumentConfig _instrumentConfig;
 
         public SegmentContextFactory(IRuntimeEnvironment runtimeEnvironment,
             ISamplerChainBuilder samplerChainBuilder,
             IUniqueIdGenerator uniqueIdGenerator,
             IEntrySegmentContextAccessor entrySegmentContextAccessor,
             ILocalSegmentContextAccessor localSegmentContextAccessor,
-            IExitSegmentContextAccessor exitSegmentContextAccessor)
+            IExitSegmentContextAccessor exitSegmentContextAccessor,
+            IConfigAccessor configAccessor)
         {
             _runtimeEnvironment = runtimeEnvironment;
             _samplerChainBuilder = samplerChainBuilder;
@@ -47,6 +50,7 @@ namespace Surging.Apm.Skywalking.Core.Tracing
             _entrySegmentContextAccessor = entrySegmentContextAccessor;
             _localSegmentContextAccessor = localSegmentContextAccessor;
             _exitSegmentContextAccessor = exitSegmentContextAccessor;
+            _instrumentConfig = configAccessor.Get<InstrumentConfig>();
         }
 
         public SegmentContext CreateEntrySegment(string operationName, ICarrier carrier)
@@ -54,8 +58,10 @@ namespace Surging.Apm.Skywalking.Core.Tracing
             var traceId = GetTraceId(carrier);
             var segmentId = GetSegmentId();
             var sampled = GetSampled(carrier, operationName);
-            var segmentContext = new SegmentContext(traceId, segmentId, sampled, _runtimeEnvironment.ServiceId.Value,
-                _runtimeEnvironment.ServiceInstanceId.Value, operationName, SpanType.Entry);
+            var segmentContext = new SegmentContext(traceId, segmentId, sampled,
+                _instrumentConfig.ServiceName ?? _instrumentConfig.ApplicationCode,
+                _instrumentConfig.ServiceInstanceName,
+                operationName, SpanType.Entry);
 
             if (carrier.HasValue)
             {
@@ -68,7 +74,9 @@ namespace Surging.Apm.Skywalking.Core.Tracing
                     ParentSpanId = carrier.ParentSpanId,
                     ParentSegmentId = carrier.ParentSegmentId,
                     EntryServiceInstanceId = carrier.EntryServiceInstanceId,
-                    ParentServiceInstanceId = carrier.ParentServiceInstanceId
+                    ParentServiceInstanceId = carrier.ParentServiceInstanceId,
+                    TraceId = carrier.TraceId,
+                    ParentServiceId = carrier.ParentServiceId,
                 };
                 segmentContext.References.Add(segmentReference);
             }
@@ -83,8 +91,10 @@ namespace Surging.Apm.Skywalking.Core.Tracing
             var traceId = GetTraceId(parentSegmentContext);
             var segmentId = GetSegmentId();
             var sampled = GetSampled(parentSegmentContext, operationName);
-            var segmentContext = new SegmentContext(traceId, segmentId, sampled, _runtimeEnvironment.ServiceId.Value,
-                _runtimeEnvironment.ServiceInstanceId.Value, operationName, SpanType.Local);
+            var segmentContext = new SegmentContext(traceId, segmentId, sampled,
+                _instrumentConfig.ServiceName ?? _instrumentConfig.ApplicationCode,
+                _instrumentConfig.ServiceInstanceName,
+                operationName, SpanType.Local);
 
             if (parentSegmentContext != null)
             {
@@ -99,7 +109,9 @@ namespace Surging.Apm.Skywalking.Core.Tracing
                     ParentSegmentId = parentSegmentContext.SegmentId,
                     EntryServiceInstanceId =
                         parentReference?.EntryServiceInstanceId ?? parentSegmentContext.ServiceInstanceId,
-                    ParentServiceInstanceId = parentSegmentContext.ServiceInstanceId
+                    ParentServiceInstanceId = parentSegmentContext.ServiceInstanceId,
+                    ParentServiceId = parentSegmentContext.ServiceId,
+                    TraceId = parentSegmentContext.TraceId
                 };
                 segmentContext.References.Add(reference);
             }
@@ -114,8 +126,10 @@ namespace Surging.Apm.Skywalking.Core.Tracing
             var traceId = GetTraceId(parentSegmentContext);
             var segmentId = GetSegmentId();
             var sampled = GetSampled(parentSegmentContext, operationName, networkAddress);
-            var segmentContext = new SegmentContext(traceId, segmentId, sampled, _runtimeEnvironment.ServiceId.Value,
-                _runtimeEnvironment.ServiceInstanceId.Value, operationName, SpanType.Exit);
+            var segmentContext = new SegmentContext(traceId, segmentId, sampled,
+                _instrumentConfig.ServiceName ?? _instrumentConfig.ApplicationCode,
+                _instrumentConfig.ServiceInstanceName,
+                operationName, SpanType.Exit);
 
             if (parentSegmentContext != null)
             {
@@ -130,7 +144,9 @@ namespace Surging.Apm.Skywalking.Core.Tracing
                     ParentSegmentId = parentSegmentContext.SegmentId,
                     EntryServiceInstanceId =
                         parentReference?.EntryServiceInstanceId ?? parentSegmentContext.ServiceInstanceId,
-                    ParentServiceInstanceId = parentSegmentContext.ServiceInstanceId
+                    ParentServiceInstanceId = parentSegmentContext.ServiceInstanceId,
+                    ParentServiceId = parentSegmentContext.ServiceId,
+                    TraceId = parentSegmentContext.TraceId
                 };
                 segmentContext.References.Add(reference);
             }
@@ -146,7 +162,7 @@ namespace Surging.Apm.Skywalking.Core.Tracing
             switch (segmentContext.Span.SpanType)
             {
                 case SpanType.Entry:
-                     _entrySegmentContextAccessor.Context = null;
+                    _entrySegmentContextAccessor.Context = null;
                     break;
                 case SpanType.Local:
                     _localSegmentContextAccessor.Context = null;
@@ -159,17 +175,17 @@ namespace Surging.Apm.Skywalking.Core.Tracing
             }
         }
 
-        private UniqueId GetTraceId(ICarrier carrier)
+        private string GetTraceId(ICarrier carrier)
         {
             return carrier.HasValue ? carrier.TraceId : _uniqueIdGenerator.Generate();
         }
 
-        private UniqueId GetTraceId(SegmentContext parentSegmentContext)
+        private string GetTraceId(SegmentContext parentSegmentContext)
         {
             return parentSegmentContext?.TraceId ?? _uniqueIdGenerator.Generate();
         }
 
-        private UniqueId GetSegmentId()
+        private string GetSegmentId()
         {
             return _uniqueIdGenerator.Generate();
         }
@@ -214,7 +230,7 @@ namespace Surging.Apm.Skywalking.Core.Tracing
                 case SpanType.Entry:
                     return null;
                 case SpanType.Local:
-                    //return _entrySegmentContextAccessor.Context;
+                    return _entrySegmentContextAccessor.Context;
                 case SpanType.Exit:
                     return _localSegmentContextAccessor.Context ?? _entrySegmentContextAccessor.Context;
                 default:

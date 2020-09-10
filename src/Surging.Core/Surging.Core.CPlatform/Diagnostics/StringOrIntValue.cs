@@ -19,7 +19,7 @@
 
 namespace Surging.Core.CPlatform.Diagnostics
 {
-   public struct StringOrIntValue
+    public struct StringOrIntValue
     {
         private readonly int _intValue;
         private readonly string _stringValue;

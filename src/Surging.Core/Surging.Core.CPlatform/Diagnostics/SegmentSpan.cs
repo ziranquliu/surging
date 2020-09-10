@@ -24,7 +24,7 @@ using System.Linq;
 
 namespace Surging.Core.CPlatform.Diagnostics
 {
-   public class SegmentSpan
+    public class SegmentSpan
     {
         public int SpanId { get; } = 0;
 
@@ -42,7 +42,7 @@ namespace Surging.Core.CPlatform.Diagnostics
 
         public SpanLayer SpanLayer { get; set; }
 
-        /// <summary>Limiting values. Please see <see cref="Components" /> or see <seealso href="https://github.com/apache/incubator-skywalking/blob/master/oap-server/server-starter/src/main/resources/component-libraries.yml"/></summary>
+        /// <summary>Limiting values. Please see <see cref="Components" /> or see <seealso href="https://github.com/apache/skywalking/blob/master/oap-server/server-bootstrap/src/main/resources/component-libraries.yml"/></summary>
         public StringOrIntValue Component { get; set; }
         public bool IsError { get; set; }
         public TagCollection Tags { get; } = new TagCollection();
@@ -138,7 +138,7 @@ namespace Surging.Core.CPlatform.Diagnostics
         IEnumerator IEnumerable.GetEnumerator()
         {
             return _logs.GetEnumerator();
-        } 
+        }
     }
 
     public class SpanLog

@@ -20,6 +20,11 @@ using System;
 using Surging.Apm.Skywalking.Transport.Grpc.V5;
 using System.Threading.Tasks;
 using Surging.Core.CPlatform.Diagnostics;
+using SegmentReporter = Surging.Apm.Skywalking.Transport.Grpc.SegmentReporter;
+using ServiceRegister = Surging.Apm.Skywalking.Transport.Grpc.ServiceRegister;
+using PingCaller = Surging.Apm.Skywalking.Transport.Grpc.PingCaller;
+using ConnectService = Surging.Apm.Skywalking.Transport.Grpc.ConnectService;
+using CLRStatsReporter = Surging.Apm.Skywalking.Transport.Grpc.CLRStatsReporter;
 
 namespace Surging.Apm.Skywalking
 {
@@ -82,11 +87,12 @@ namespace Surging.Apm.Skywalking
         private SkywalkingModule AddGrpcTransport(ContainerBuilderWrapper builder)
         {
             builder.RegisterType<SkyApmClientV5>().As<ISkyApmClientV5>().SingleInstance();
-            builder.RegisterType<Transport.Grpc.SegmentReporter>().As<ISegmentReporter>().SingleInstance();
+            builder.RegisterType<SegmentReporter>().As<ISegmentReporter>().SingleInstance();
             builder.RegisterType<ConnectionManager>().SingleInstance();
             builder.RegisterType<PingCaller>().As<IPingCaller>().SingleInstance();
             builder.RegisterType<ServiceRegister>().As<IServiceRegister>().SingleInstance();
             builder.RegisterType<ConnectService>().As<IExecutionService>().SingleInstance();
+            builder.RegisterType<CLRStatsReporter>().As<ICLRStatsReporter>().SingleInstance();
             return this; 
         }
     }

@@ -25,25 +25,27 @@ namespace Surging.Apm.Skywalking.Core.Tracing
     public class NullableCarrier : ICarrier
     {
         public static NullableCarrier Instance { get; } = new NullableCarrier();
-        
+
         public bool HasValue { get; } = false;
-        
+
         public bool? Sampled { get; }
-        
-        public UniqueId TraceId { get; }
-        
-        public UniqueId ParentSegmentId { get; }
-        
+
+        public string TraceId { get; }
+
+        public string ParentSegmentId { get; }
+
         public int ParentSpanId { get; }
-        
-        public int ParentServiceInstanceId { get; }
-        
-        public int EntryServiceInstanceId { get; }
-        
+
+        public string ParentServiceInstanceId { get; }
+
+        public string EntryServiceInstanceId { get; }
+
         public StringOrIntValue NetworkAddress { get; }
-        
+
         public StringOrIntValue EntryEndpoint { get; }
-        
+
         public StringOrIntValue ParentEndpoint { get; }
+
+        public string ParentServiceId { get; }
     }
 }

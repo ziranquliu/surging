@@ -22,6 +22,7 @@ namespace Surging.Apm.Skywalking.Abstractions.Tracing
 {
     public interface IUniqueIdGenerator
     {
-        UniqueId Generate();
+        //UniqueId Generate();
+        string Generate();
     }
 }

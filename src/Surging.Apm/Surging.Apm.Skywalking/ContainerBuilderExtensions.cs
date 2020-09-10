@@ -17,9 +17,9 @@ using Surging.Apm.Skywalking.Transport.Grpc.V5;
 using Surging.Apm.Skywalking.Transport.Grpc.V6;
 using Surging.Core.CPlatform;
 using Surging.Core.CPlatform.Diagnostics;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using ServiceRegister = Surging.Apm.Skywalking.Transport.Grpc.ServiceRegister;
+using PingCaller = Surging.Apm.Skywalking.Transport.Grpc.PingCaller;
+using ConnectService = Surging.Apm.Skywalking.Transport.Grpc.ConnectService;
 
 namespace Surging.Apm.Skywalking
 {

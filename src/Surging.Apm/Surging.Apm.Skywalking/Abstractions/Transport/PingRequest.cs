@@ -22,6 +22,8 @@ namespace Surging.Apm.Skywalking.Abstractions.Transport
     {
         public int ServiceInstanceId { get; set; }
 
+        public string ServiceName { get; set; }
+
         public string InstanceId { get; set; }
     }
 }

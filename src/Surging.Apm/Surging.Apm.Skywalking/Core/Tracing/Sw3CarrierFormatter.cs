@@ -72,8 +72,8 @@ namespace Surging.Apm.Skywalking.Core.Tracing
             if (!_uniqueIdParser.TryParse(parts[7], out var traceId))
                 return Defer();
 
-            return new Carrier(traceId, segmentId, parentSpanId, parentServiceInstanceId,
-                entryServiceInstanceId)
+            return new Carrier(traceId.ToString(), segmentId.ToString(), parentSpanId, parentServiceInstanceId.ToString(),
+                entryServiceInstanceId.ToString())
             {
                 NetworkAddress = StringOrIntValueHelpers.ParseStringOrIntValue(parts[4]),
                 EntryEndpoint = StringOrIntValueHelpers.ParseStringOrIntValue(parts[5]),

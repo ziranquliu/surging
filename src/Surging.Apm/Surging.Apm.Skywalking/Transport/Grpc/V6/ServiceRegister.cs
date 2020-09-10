@@ -119,5 +119,10 @@ namespace Surging.Apm.Skywalking.Transport.Grpc.V6
                 () => NullableValue.Null,
                 () => ExceptionHelpers.RegisterServiceInstanceError);
         }
+
+        public Task<bool> ReportInstancePropertiesAsync(ServiceInstancePropertiesRequest serviceInstancePropertiesRequest, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

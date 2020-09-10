@@ -27,9 +27,11 @@ namespace Surging.Apm.Skywalking.Abstractions.Config
 
         [Obsolete("Use ServiceName.")]
         public string ApplicationCode { get; set; }
-        
+
         public string ServiceName { get; set; }
-        
+
+        public string ServiceInstanceName { get; set; }
+
         public string[] HeaderVersions { get; set; }
     }
 
@@ -38,5 +40,7 @@ namespace Surging.Apm.Skywalking.Abstractions.Config
         public static string SW3 { get; } = "sw3";
         
         public static string SW6 { get; } = "sw6";
+
+        public static string SW8 { get; } = "sw8";
     }
 }
