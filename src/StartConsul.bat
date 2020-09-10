@@ -1,7 +1,7 @@
 cd %~dp0/consul_1.8.3_windows_amd64
 start cmd /C "title Consul && consul.exe agent -dev"
 
-cd %~dp0/apache-skywalking-apm-bin/bin
+cd D:\OpenSources\skywalking\dist\apache-skywalking-apm-bin\bin
 start cmd /C "startup.bat"
 
 cd %~dp0/Surging.Services/Surging.Services.Server

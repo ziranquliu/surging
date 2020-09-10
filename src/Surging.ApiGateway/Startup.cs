@@ -59,27 +59,32 @@ namespace Surging.ApiGateway
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddMvc(options => {
+                options.EnableEndpointRouting = false;
+                options.Filters.Add(typeof(CustomExceptionFilterAttribute));
+            })
+           .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+           .AddJsonOptions(options => {
+               options.JsonSerializerOptions.Converters.Add(new DateTimeJsonConverter("yyyy-MM-dd HH:mm:ss"));
+               options.JsonSerializerOptions.PropertyNamingPolicy = null;
+               options.JsonSerializerOptions.DictionaryKeyPolicy = null;
+           });
+
+            services.AddLogging(opt =>
+            {
+                opt.AddConsole();
+            });
+
+            services.AddCors();
+
             return RegisterAutofac(services);
         }
 
         private IServiceProvider RegisterAutofac(IServiceCollection services)
         {
             var registerConfig = ApiGateWayConfig.Register;
-            services.AddMvc(options => {
-                options.EnableEndpointRouting = false;
-                options.Filters.Add(typeof(CustomExceptionFilterAttribute));
-            })
-            .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-            .AddJsonOptions(options => {
-                options.JsonSerializerOptions.Converters.Add(new DateTimeJsonConverter("yyyy-MM-dd HH:mm:ss"));
-                options.JsonSerializerOptions.PropertyNamingPolicy = null;
-                options.JsonSerializerOptions.DictionaryKeyPolicy = null;
-            });
-            services.AddLogging(opt =>
-            {
-                opt.AddConsole();
-            });
-            services.AddCors();
+           
             var builder = new ContainerBuilder();
             builder.Populate(services);
             builder.AddMicroService(option =>
@@ -149,10 +154,8 @@ namespace Surging.ApiGateway
             var myProvider = new FileExtensionContentTypeProvider();
             myProvider.Mappings.Add(".tpl", "text/plain");
             app.UseStaticFiles(new StaticFileOptions() { ContentTypeProvider = myProvider });
-            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
             app.UseAuthorization();
 
             app.UseMvc(routes =>
