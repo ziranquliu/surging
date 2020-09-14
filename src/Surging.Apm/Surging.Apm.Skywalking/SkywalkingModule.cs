@@ -61,8 +61,8 @@ namespace Surging.Apm.Skywalking
         {
             builder.RegisterType<TracingContext>().As<ITracingContext>().SingleInstance();
             builder.RegisterType<CarrierPropagator>().As<ICarrierPropagator>().SingleInstance();
-            builder.RegisterType<Sw3CarrierFormatter>().As<ICarrierFormatter>().SingleInstance();
-            builder.RegisterType<Sw6CarrierFormatter>().As<ICarrierFormatter>().SingleInstance();
+            //builder.RegisterType<Sw3CarrierFormatter>().As<ICarrierFormatter>().SingleInstance();
+            //builder.RegisterType<Sw6CarrierFormatter>().As<ICarrierFormatter>().SingleInstance();
             builder.RegisterType<SegmentContextFactory>().As<ISegmentContextFactory>().SingleInstance();
             builder.RegisterType<EntrySegmentContextAccessor>().As<IEntrySegmentContextAccessor>().SingleInstance();
             builder.RegisterType<LocalSegmentContextAccessor>().As<ILocalSegmentContextAccessor>().SingleInstance();

@@ -41,7 +41,7 @@ namespace Surging.Apm.Skywalking.Core.Service
         }
 
         protected override bool CanExecute() =>
-            _transportConfig.ProtocolVersion == ProtocolVersions.V6 && base.CanExecute();
+            _transportConfig.ProtocolVersion == ProtocolVersions.V8 && base.CanExecute();
 
         protected override TimeSpan DueTime { get; } = TimeSpan.FromSeconds(30);
         protected override TimeSpan Period { get; } = TimeSpan.FromSeconds(60);

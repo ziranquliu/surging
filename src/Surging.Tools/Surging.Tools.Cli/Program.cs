@@ -25,12 +25,10 @@ namespace Surging.Tools.Cli
         {
             _curlCommand = new CommandLineApplication<CurlCommand>();
             _serviceProvider = ConfigureServices();
-           
         }
 
         static int Main(string[] args)
         {
-
             return new Program().Execute(args);
         }
 

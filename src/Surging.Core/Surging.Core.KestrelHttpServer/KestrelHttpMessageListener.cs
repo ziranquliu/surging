@@ -115,7 +115,10 @@ namespace Surging.Core.KestrelHttpServer
         public void ConfigureServices(IServiceCollection services)
         { 
             var builder = new ContainerBuilder();
-            services.AddMvc();
+            services.AddMvc(options =>
+            {
+                options.EnableEndpointRouting = false;
+            });
             _moduleProvider.ConfigureServices(new ConfigurationContext(services,
                 _moduleProvider.Modules,
                 _moduleProvider.VirtualPaths,

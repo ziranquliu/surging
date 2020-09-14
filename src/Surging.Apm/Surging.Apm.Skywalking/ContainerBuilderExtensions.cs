@@ -47,8 +47,8 @@ namespace Surging.Apm.Skywalking
             var services = builder.Services;
             services.RegisterType<TracingContext>().As<ITracingContext>().SingleInstance();
             services.RegisterType<CarrierPropagator>().As<ICarrierPropagator>().SingleInstance();
-            services.RegisterType<Sw3CarrierFormatter>().As<ICarrierFormatter>().SingleInstance();
-            services.RegisterType<Sw6CarrierFormatter>().As<ICarrierFormatter>().SingleInstance();
+            //services.RegisterType<Sw3CarrierFormatter>().As<ICarrierFormatter>().SingleInstance();
+            //services.RegisterType<Sw6CarrierFormatter>().As<ICarrierFormatter>().SingleInstance();
             services.RegisterType<SegmentContextFactory>().As<ISegmentContextFactory>().SingleInstance();
             services.RegisterType<EntrySegmentContextAccessor>().As<IEntrySegmentContextAccessor>().SingleInstance();
             services.RegisterType<LocalSegmentContextAccessor>().As<ILocalSegmentContextAccessor>().SingleInstance();

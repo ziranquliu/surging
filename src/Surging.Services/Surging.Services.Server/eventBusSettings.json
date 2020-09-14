@@ -3,6 +3,6 @@
 
   "VirtualHost": "/",
   "BrokerName": "surging_demo",
-  "Port": "5672"
+  "Port": "15672"
 }
 

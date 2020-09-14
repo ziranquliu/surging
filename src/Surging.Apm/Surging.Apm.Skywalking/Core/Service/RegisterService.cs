@@ -49,7 +49,7 @@ namespace Surging.Apm.Skywalking.Core.Service
         protected override TimeSpan Period { get; } = TimeSpan.FromSeconds(30);
 
         protected override bool CanExecute() =>
-            _transportConfig.ProtocolVersion == ProtocolVersions.V6 && !RuntimeEnvironment.Initialized;
+            _transportConfig.ProtocolVersion == ProtocolVersions.V8 && !RuntimeEnvironment.Initialized;
 
         protected override async Task ExecuteAsync(CancellationToken cancellationToken)
         {
