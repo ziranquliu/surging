@@ -29,28 +29,40 @@ namespace Surging.Apm.Skywalking.Transport.Grpc
     public class ServiceRegister : IServiceRegister
     {
         private readonly TransportConfig _transportConfig;
+        private readonly IServiceRegister _serviceRegisterV6;
         private readonly IServiceRegister _serviceRegisterV8;
 
         public ServiceRegister(ConnectionManager connectionManager, IConfigAccessor configAccessor,
             ILoggerFactory loggerFactory)
         {
             _transportConfig = configAccessor.Get<TransportConfig>();
+            _serviceRegisterV6 = new V6.ServiceRegister(connectionManager, configAccessor, loggerFactory);
             _serviceRegisterV8 = new V8.ServiceRegister(connectionManager, configAccessor, loggerFactory);
         }
 
         public Task<NullableValue> RegisterServiceAsync(ServiceRequest serviceRequest, CancellationToken cancellationToken = default)
         {
+            if (_transportConfig.ProtocolVersion == ProtocolVersions.V6)
+                return _serviceRegisterV6.RegisterServiceAsync(serviceRequest, cancellationToken);
+            if (_transportConfig.ProtocolVersion == ProtocolVersions.V8)
+                return _serviceRegisterV8.RegisterServiceAsync(serviceRequest, cancellationToken);
             throw new NotImplementedException();
         }
 
         public Task<NullableValue> RegisterServiceInstanceAsync(ServiceInstanceRequest serviceInstanceRequest, CancellationToken cancellationToken = default)
         {
+            if (_transportConfig.ProtocolVersion == ProtocolVersions.V6)
+                return _serviceRegisterV6.RegisterServiceInstanceAsync(serviceInstanceRequest, cancellationToken);
+            if (_transportConfig.ProtocolVersion == ProtocolVersions.V8)
+                return _serviceRegisterV8.RegisterServiceInstanceAsync(serviceInstanceRequest, cancellationToken);
             throw new NotImplementedException();
         }
 
         public async Task<bool> ReportInstancePropertiesAsync(ServiceInstancePropertiesRequest serviceInstancePropertiesRequest,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
+            if (_transportConfig.ProtocolVersion == ProtocolVersions.V6)
+                return await _serviceRegisterV6.ReportInstancePropertiesAsync(serviceInstancePropertiesRequest, cancellationToken);
             if (_transportConfig.ProtocolVersion == ProtocolVersions.V8)
                 return await _serviceRegisterV8.ReportInstancePropertiesAsync(serviceInstancePropertiesRequest, cancellationToken);
             return true;

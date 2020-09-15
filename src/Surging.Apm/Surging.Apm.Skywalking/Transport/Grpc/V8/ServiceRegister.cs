@@ -51,12 +51,12 @@ namespace Surging.Apm.Skywalking.Transport.Grpc.V8
 
         public Task<NullableValue> RegisterServiceAsync(ServiceRequest serviceRequest, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(NullableValue.Null);
         }
 
         public Task<NullableValue> RegisterServiceInstanceAsync(ServiceInstanceRequest serviceInstanceRequest, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(NullableValue.Null);
         }
 
         public async Task<bool> ReportInstancePropertiesAsync(ServiceInstancePropertiesRequest serviceInstancePropertiesRequest, CancellationToken cancellationToken = default)
