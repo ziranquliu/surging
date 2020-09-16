@@ -15,8 +15,8 @@
     "DisconnTimeInterval": 30,
     "ExecutionTimeoutInMilliseconds": 1000,
     "Protocol": "${Protocol}|None", //Http、Tcp、None
-    "RootPath": "${RootPath}|D:\\userapp",
-    "WebRootPath": "${WebRootPath}|D:\\UserApp\\wwwroot",
+    "RootPath": "${RootPath}|D:\\OpenSources\\DotNetFramework\\surging\\src\\Surging.ApiGateway",
+    "WebRootPath": "${WebRootPath}|D:\\OpenSources\\DotNetFramework\\surging\\src\\Surging.ApiGateway\\wwwroot",
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
     "Ports": {

@@ -13,7 +13,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Surging.ApiGateway;
 using Surging.Apm.Skywalking;
 using Surging.Apm.Skywalking.Abstractions;
 using Surging.Core.ApiGateWay;
